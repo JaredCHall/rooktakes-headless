@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc && resolve-tspaths",
+    "build": "vitest run unit --silent && tsc && resolve-tspaths",
     "test": "vitest run"
   },
   "devDependencies": {
@@ -16,8 +16,8 @@
   },
   "exports": {
     "./dist/src/*": {
-      "types": "./esm/src/*.d.ts",
-      "import": "./esm/src/*.js"
+      "types": "./dist/src/*.d.ts",
+      "import": "./dist/src/*.js"
     }
   }
 }
