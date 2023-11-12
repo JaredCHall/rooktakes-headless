@@ -4,13 +4,20 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && resolve-tspaths",
     "test": "vitest run"
   },
   "devDependencies": {
     "@vitest/ui": "^0.34.6",
+    "resolve-tspaths": "^0.8.17",
     "typescript": "^5.0.2",
     "vite-tsconfig-paths": "^4.2.1",
     "vitest": "^0.34.6"
+  },
+  "exports": {
+    "./dist/src/*": {
+      "types": "./esm/src/*.d.ts",
+      "import": "./esm/src/*.js"
+    }
   }
 }

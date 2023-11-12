@@ -21,6 +21,6 @@
     },
     "baseUrl": "./ts/src"
   },
-  "exclude": ["./ts/src/__tests__/"],
+  "exclude": ["./ts/src/__tests__/**/*"],
   "include": ["./ts/src/**/*"]
 }
