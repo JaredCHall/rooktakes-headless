@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "rootDir": "ts",
+    "outDir": "dist",
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "sourceMap": true,
+
+    "baseUrl": "./ts/src"
+  },
+  "exclude": ["./ts/src/__tests__/"]
+}
