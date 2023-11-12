@@ -1,9 +1,9 @@
-import {BasicTimer} from "GameClock/BasicTimer";
-import {IncrementTimer} from "GameClock/IncrementTimer";
-import {DelayTimer} from "GameClock/DelayTimer";
-import type {GameOptions} from "Game/GameOptions";
-import {Assert} from "Assert";
-import type {Game} from "Game/Game";
+import {BasicTimer} from "@chess/GameClock/BasicTimer";
+import {IncrementTimer} from "@chess/GameClock/IncrementTimer";
+import {DelayTimer} from "@chess/GameClock/DelayTimer";
+import type {GameOptions} from "@chess/Game/GameOptions";
+import {Assert} from "@chess/Assert";
+import type {Game} from "@chess/Game/Game";
 
 // TODO: support changing timerType mid-game if there are different timing phases
 export class GameClock

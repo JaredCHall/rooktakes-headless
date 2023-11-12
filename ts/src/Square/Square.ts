@@ -1,8 +1,8 @@
-import {Color, type ColorType} from "Color";
-import {SquareCoordinates} from "Square/SquareCoordinates";
-import {Squares144} from "Position/Squares144";
-import {Squares64} from "Position/Squares64";
-import type {Piece} from "Piece";
+import {Color, type ColorType} from "@chess/Color";
+import {SquareCoordinates} from "@chess/Square/SquareCoordinates";
+import {Squares144} from "@chess/Position/Squares144";
+import {Squares64} from "@chess/Position/Squares64";
+import type {Piece} from "@chess/Piece";
 
 export type SquareType = 'a1'|'a2'|'a3'|'a4'|'a5'|'a6'|'a7'|'a8'|
     'b1'|'b2'|'b3'|'b4'|'b5'|'b6'|'b7'|'b8'|

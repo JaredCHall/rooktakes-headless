@@ -1,11 +1,11 @@
-import {Squares64} from "Position/Squares64";
-import {Piece} from "Piece";
-import type {ChessPieceType} from "Piece";
-import {Color} from "Color";
-import type { SquareType } from "Square/Square";
-import type {ChessMove} from "Move/MoveType/ChessMove";
-import {DoublePawnMove} from "Move/MoveType/DoublePawnMove";
-import {CastlesType} from "Move/MoveType/CastlesType";
+import {Squares64} from "@chess/Position/Squares64";
+import {Piece} from "@chess/Piece";
+import type {ChessPieceType} from "@chess/Piece";
+import {Color} from "@chess/Color";
+import type { SquareType } from "@chess/Square/Square";
+import type {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {DoublePawnMove} from "@chess/Move/MoveType/DoublePawnMove";
+import {CastlesType} from "@chess/Move/MoveType/CastlesType";
 
 export class ExtendedFen {
 

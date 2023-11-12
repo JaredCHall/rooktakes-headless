@@ -1,5 +1,5 @@
-import {BasicTimer} from "GameClock/BasicTimer";
-import {Assert} from "Assert";
+import {BasicTimer} from "@chess/GameClock/BasicTimer";
+import {Assert} from "@chess/Assert";
 
 export class DelayTimer extends BasicTimer
 {

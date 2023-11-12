@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import {SquareCoordinates} from "Square/SquareCoordinates";
+import {SquareCoordinates} from "@chess/Square/SquareCoordinates";
 
 
 describe('SquareCoordinates', () => {

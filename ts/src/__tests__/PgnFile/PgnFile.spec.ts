@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import {PgnFile} from "PgnFile/PgnFile";
-import {Game} from "Game/Game";
+import {PgnFile} from "@chess/PgnFile/PgnFile";
+import {Game} from "@chess/Game/Game";
 
 describe('PgnFile' , () => {
 

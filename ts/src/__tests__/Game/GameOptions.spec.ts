@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import {GameOptions} from "Game/GameOptions";
+import {GameOptions} from "@chess/Game/GameOptions";
 
 describe('GameOptions', () => {
     it('constructs itself', () => {

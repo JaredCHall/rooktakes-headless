@@ -1,23 +1,24 @@
-import {Square} from "Square/Square";
-import type {SquareType} from "Square/Square";
-import {Squares144} from "Position/Squares144";
-import {ExtendedFen} from "Position/ExtendedFEN";
-import {Squares64} from "Position/Squares64";
-import {MoveArbiter} from "MoveArbiter/MoveArbiter";
-import {MoveEngine} from "MoveArbiter/MoveEngine";
-import {MoveHistory} from "Move/MoveHistory";
-import type {MoveList} from "Move/MoveList";
-import {ChessMove} from "Move/MoveType/ChessMove";
-import {GameResult} from "Game/GameResult";
-import {MadeMove} from "Move/MadeMove";
-import {Color, type ColorType} from "Color";
-import {Player} from "Player";
-import {MaterialScores} from "Position/MaterialScores";
-import {GamePosition} from "Position/GamePosition";
-import {GameOptions} from "Game/GameOptions";
-import {GameClock} from "GameClock/GameClock";
-import {CoordinateNotation} from "MoveNotary/CoordinateNotation";
-import {SanNotation} from "MoveNotary/SanNotation";
+import {Square} from "@chess/Square/Square";
+import type {SquareType} from "@chess/Square/Square";
+import {Squares144} from "@chess/Position/Squares144";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import {Squares64} from "@chess/Position/Squares64";
+import {MoveArbiter} from "@chess/MoveArbiter/MoveArbiter";
+import {MoveEngine} from "@chess/MoveArbiter/MoveEngine";
+import {MoveHistory} from "@chess/Move/MoveHistory";
+import type {MoveList} from "@chess/Move/MoveList";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {GameResult} from "@chess/Game/GameResult";
+import {MadeMove} from "@chess/Move/MadeMove";
+import type {ColorType} from "@chess/Color";
+import {Color} from "@chess/Color";
+import {Player} from "@chess/Player";
+import {MaterialScores} from "@chess/Position/MaterialScores";
+import {GamePosition} from "@chess/Position/GamePosition";
+import {GameOptions} from "@chess/Game/GameOptions";
+import {GameClock} from "@chess/GameClock/GameClock";
+import {CoordinateNotation} from "@chess/MoveNotary/CoordinateNotation";
+import {SanNotation} from "@chess/MoveNotary/SanNotation";
 
 export class Game
 {

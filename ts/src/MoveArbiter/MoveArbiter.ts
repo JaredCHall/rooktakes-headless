@@ -1,17 +1,17 @@
-import {MoveEngine} from "MoveArbiter/MoveEngine";
-import {ExtendedFen} from "Position/ExtendedFEN";
-import {MoveHistory} from "Move/MoveHistory";
-import {Color} from "Color";
-import {MoveList} from "Move/MoveList";
-import {MadeMove} from "Move/MadeMove";
-import {CastlingMove} from "Move/MoveType/CastlingMove";
-import type {SquareType} from "Square/Square";
-import type {ChessMove} from "Move/MoveType/ChessMove";
-import type {ColorType} from "Color";
-import {MoveNotary} from "MoveNotary/MoveNotary";
-import {Squares144} from "Position/Squares144";
-import {MoveFactory} from "MoveNotary/MoveFactory";
-import type {MoveNotation} from "MoveNotary/MoveNotation";
+import {MoveEngine} from "@chess/MoveArbiter/MoveEngine";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import {MoveHistory} from "@chess/Move/MoveHistory";
+import {Color} from "@chess/Color";
+import {MoveList} from "@chess/Move/MoveList";
+import {MadeMove} from "@chess/Move/MadeMove";
+import {CastlingMove} from "@chess/Move/MoveType/CastlingMove";
+import type {SquareType} from "@chess/Square/Square";
+import type {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import type {ColorType} from "@chess/Color";
+import {MoveNotary} from "@chess/MoveNotary/MoveNotary";
+import {Squares144} from "@chess/Position/Squares144";
+import {MoveFactory} from "@chess/MoveNotary/MoveFactory";
+import type {MoveNotation} from "@chess/MoveNotary/MoveNotation";
 
 export class MoveArbiter {
 
@@ -101,7 +101,8 @@ export class MoveArbiter {
     getLegalMoves(
         squareName: SquareType,
         //@ts-ignore
-        filterCallback = (move: ChessMove) => {return true}): MoveList
+        filterCallback = (move: ChessMove) => {return true}
+    ): MoveList
     {
         const moves = this.moveEngine.getPseudoLegalMoves(squareName, this.fenNumber.enPassantTarget, this.fenNumber.castleRights)
         const legalMoves = new MoveList()

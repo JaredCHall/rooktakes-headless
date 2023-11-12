@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest'
-import {ExtendedFen} from "Position/ExtendedFEN";
-import {MaterialScores} from "Position/MaterialScores";
-import {GameClock} from "GameClock/GameClock";
-import {GamePosition} from "Position/GamePosition";
-import {BasicTimer} from "GameClock/BasicTimer";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import {MaterialScores} from "@chess/Position/MaterialScores";
+import {GameClock} from "@chess/GameClock/GameClock";
+import {GamePosition} from "@chess/Position/GamePosition";
+import {BasicTimer} from "@chess/GameClock/BasicTimer";
 
 describe('GamePosition', () => {
 

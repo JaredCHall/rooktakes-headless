@@ -1,5 +1,5 @@
 import { describe, it, expect} from 'vitest'
-import {Assert} from "Assert";
+import {Assert} from "@chess/Assert";
 
 
 

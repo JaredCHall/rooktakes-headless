@@ -1,9 +1,9 @@
 import { describe, it, expect, vi} from 'vitest'
-import {GameClock} from "GameClock/GameClock";
-import {BasicTimer} from "GameClock/BasicTimer";
-import {GameOptions} from "Game/GameOptions";
-import {DelayTimer} from "GameClock/DelayTimer";
-import {IncrementTimer} from "GameClock/IncrementTimer";
+import {GameClock} from "@chess/GameClock/GameClock";
+import {BasicTimer} from "@chess/GameClock/BasicTimer";
+import {GameOptions} from "@chess/Game/GameOptions";
+import {DelayTimer} from "@chess/GameClock/DelayTimer";
+import {IncrementTimer} from "@chess/GameClock/IncrementTimer";
 
 
 

@@ -1,14 +1,14 @@
 import { describe, it, expect } from 'vitest'
 
-import {ExtendedFen} from "Position/ExtendedFEN";
-import {Squares144} from "Position/Squares144";
-import {MoveEngine} from "MoveArbiter/MoveEngine";
-import {MoveArbiter} from "MoveArbiter/MoveArbiter";
-import {Squares64} from "Position/Squares64";
-import {ChessMove} from "Move/MoveType/ChessMove";
-import {Piece} from "Piece";
-import {CastlingMove} from "Move/MoveType/CastlingMove";
-import {CoordinateNotation} from "MoveNotary/CoordinateNotation";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import {Squares144} from "@chess/Position/Squares144";
+import {MoveEngine} from "@chess/MoveArbiter/MoveEngine";
+import {MoveArbiter} from "@chess/MoveArbiter/MoveArbiter";
+import {Squares64} from "@chess/Position/Squares64";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {Piece} from "@chess/Piece";
+import {CastlingMove} from "@chess/Move/MoveType/CastlingMove";
+import {CoordinateNotation} from "@chess/MoveNotary/CoordinateNotation";
 
 
 const getTestMoveArbiter = (fen) => {

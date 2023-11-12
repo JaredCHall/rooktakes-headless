@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, it, expect, vi } from 'vitest'
-import {BasicTimer} from "GameClock/BasicTimer";
-import {DelayTimer} from "GameClock/DelayTimer";
-import {IncrementTimer} from "GameClock/IncrementTimer";
+import {BasicTimer} from "@chess/GameClock/BasicTimer";
+import {DelayTimer} from "@chess/GameClock/DelayTimer";
+import {IncrementTimer} from "@chess/GameClock/IncrementTimer";
 
 const advanceTime = (seconds) => {
     const ms = 1000 * seconds

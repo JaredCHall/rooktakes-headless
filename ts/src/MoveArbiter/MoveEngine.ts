@@ -1,17 +1,17 @@
-import {Piece} from "Piece";
-import {Squares144} from "Position/Squares144";
-import type {SquareType} from "Square/Square";
-import {Square} from "Square/Square";
-import {MoveList} from "Move/MoveList";
-import {ChessMove} from "Move/MoveType/ChessMove";
-import {EnPassantMove} from "Move/MoveType/EnPassantMove";
-import {DoublePawnMove} from "Move/MoveType/DoublePawnMove";
-import {PawnPromotionMove} from "Move/MoveType/PawnPromotionMove";
-import {CastlingMove} from "Move/MoveType/CastlingMove";
-import {CastlesType} from "Move/MoveType/CastlesType";
-import type {ColorType} from "Color";
-import type {Squares64} from "Position/Squares64";
-import {Color} from "Color";
+import {Piece} from "@chess/Piece";
+import {Squares144} from "@chess/Position/Squares144";
+import type {SquareType} from "@chess/Square/Square";
+import {Square} from "@chess/Square/Square";
+import {MoveList} from "@chess/Move/MoveList";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {EnPassantMove} from "@chess/Move/MoveType/EnPassantMove";
+import {DoublePawnMove} from "@chess/Move/MoveType/DoublePawnMove";
+import {PawnPromotionMove} from "@chess/Move/MoveType/PawnPromotionMove";
+import {CastlingMove} from "@chess/Move/MoveType/CastlingMove";
+import {CastlesType} from "@chess/Move/MoveType/CastlesType";
+import type {ColorType} from "@chess/Color";
+import type {Squares64} from "@chess/Position/Squares64";
+import {Color} from "@chess/Color";
 
 export class MoveEngine {
 

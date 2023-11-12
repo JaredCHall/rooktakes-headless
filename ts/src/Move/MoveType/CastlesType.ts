@@ -1,6 +1,6 @@
-import type {SquareType} from "Square/Square";
-import type {ColorType} from "Color";
-import type {Piece} from "Piece";
+import type {SquareType} from "@chess/Square/Square";
+import type {ColorType} from "@chess/Color";
+import type {Piece} from "@chess/Piece";
 
 export class CastlesType {
     readonly rooksOldSquare: SquareType

@@ -1,5 +1,5 @@
-import {ChessMove} from "Move/MoveType/ChessMove";
-import type {SquareType} from "Square/Square";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import type {SquareType} from "@chess/Square/Square";
 
 export class MoveList {
 

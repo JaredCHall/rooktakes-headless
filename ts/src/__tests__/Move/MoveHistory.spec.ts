@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest'
-import {MoveHistory} from "Move/MoveHistory";
-import {MadeMove} from "Move/MadeMove";
-import {ExtendedFen} from "Position/ExtendedFEN";
-import {ChessMove} from "Move/MoveType/ChessMove";
-import {GamePosition} from "Position/GamePosition";
+import {MoveHistory} from "@chess/Move/MoveHistory";
+import {MadeMove} from "@chess/Move/MadeMove";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {GamePosition} from "@chess/Position/GamePosition";
 
-vi.mock("Move/MoveType/ChessMove")
+vi.mock("@chess/Move/MoveType/ChessMove")
 
 
 describe('MoveHistory',()=>{

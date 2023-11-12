@@ -1,9 +1,9 @@
-import type {MoveArbiter} from "MoveArbiter/MoveArbiter";
-import {SanNotation} from "MoveNotary/SanNotation";
-import {CoordinateNotation} from "MoveNotary/CoordinateNotation";
-import {ChessMove} from "Move/MoveType/ChessMove";
-import {Square} from "Square/Square";
-import {PawnPromotionMove} from "Move/MoveType/PawnPromotionMove";
+import type {MoveArbiter} from "@chess/MoveArbiter/MoveArbiter";
+import {SanNotation} from "@chess/MoveNotary/SanNotation";
+import {CoordinateNotation} from "@chess/MoveNotary/CoordinateNotation";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {Square} from "@chess/Square/Square";
+import {PawnPromotionMove} from "@chess/Move/MoveType/PawnPromotionMove";
 
 export class MoveFactory {
 

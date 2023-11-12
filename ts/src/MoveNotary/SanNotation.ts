@@ -1,9 +1,9 @@
-import type {SquareType} from "Square/Square";
-import {Piece, type ChessPieceType} from "Piece";
-import {CastlesType} from "Move/MoveType/CastlesType";
-import type {ColorType} from "Color";
-import {ExtendedFen} from "Position/ExtendedFEN";
-import {MoveNotation} from "MoveNotary/MoveNotation";
+import type {SquareType} from "@chess/Square/Square";
+import {Piece, type ChessPieceType} from "@chess/Piece";
+import {CastlesType} from "@chess/Move/MoveType/CastlesType";
+import type {ColorType} from "@chess/Color";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import {MoveNotation} from "@chess/MoveNotary/MoveNotation";
 
 export class SanNotation extends MoveNotation {
 

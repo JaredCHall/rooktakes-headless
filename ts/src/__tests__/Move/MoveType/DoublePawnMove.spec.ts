@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import {Piece} from "Piece";
-import {DoublePawnMove} from "Move/MoveType/DoublePawnMove";
+import {Piece} from "@chess/Piece";
+import {DoublePawnMove} from "@chess/Move/MoveType/DoublePawnMove";
 
 describe('DoublePawnMove', () => {
     it('it constructs itself', () => {

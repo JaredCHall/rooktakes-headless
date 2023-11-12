@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
-import {Square} from "Square/Square";
-import {Piece} from "Piece";
-import {SquareCoordinates} from "Square/SquareCoordinates";
+import {Square} from "@chess/Square/Square";
+import {Piece} from "@chess/Piece";
+import {SquareCoordinates} from "@chess/Square/SquareCoordinates";
 
 
 describe('Square', () => {

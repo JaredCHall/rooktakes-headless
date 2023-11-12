@@ -1,8 +1,8 @@
-import type {Squares64} from "Position/Squares64";
-import type {ChessMove} from "Move/MoveType/ChessMove";
-import type {ChessPieceType} from "Piece";
-import {PawnPromotionMove} from "Move/MoveType/PawnPromotionMove";
-import {Piece} from "Piece";
+import type {Squares64} from "@chess/Position/Squares64";
+import type {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import type {ChessPieceType} from "@chess/Piece";
+import {PawnPromotionMove} from "@chess/Move/MoveType/PawnPromotionMove";
+import {Piece} from "@chess/Piece";
 
 export class MaterialScores
 {

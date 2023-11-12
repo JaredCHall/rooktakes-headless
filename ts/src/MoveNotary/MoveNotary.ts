@@ -1,10 +1,10 @@
-import {CastlingMove} from "Move/MoveType/CastlingMove";
-import type {ChessMove} from "Move/MoveType/ChessMove";
-import {PawnPromotionMove} from "Move/MoveType/PawnPromotionMove";
-import type {MoveArbiter} from "MoveArbiter/MoveArbiter";
-import {SanNotation} from "MoveNotary/SanNotation";
-import {Square} from "Square/Square";
-import {CoordinateNotation} from "MoveNotary/CoordinateNotation";
+import {CastlingMove} from "@chess/Move/MoveType/CastlingMove";
+import type {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {PawnPromotionMove} from "@chess/Move/MoveType/PawnPromotionMove";
+import type {MoveArbiter} from "@chess/MoveArbiter/MoveArbiter";
+import {SanNotation} from "@chess/MoveNotary/SanNotation";
+import {Square} from "@chess/Square/Square";
+import {CoordinateNotation} from "@chess/MoveNotary/CoordinateNotation";
 
 export class MoveNotary {
 

@@ -1,5 +1,5 @@
-import type {Piece} from "Piece";
-import type {SquareType} from "Square/Square";
+import type {Piece} from "@chess/Piece";
+import type {SquareType} from "@chess/Square/Square";
 
 export class MoveStep {
 

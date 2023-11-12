@@ -1,4 +1,4 @@
-import {Assert} from "Assert";
+import {Assert} from "@chess/Assert";
 
 export class BasicTimer
 {
@@ -6,7 +6,7 @@ export class BasicTimer
 
     timeRemaining: number // seconds
 
-    intervalId: number|null = null
+    intervalId: NodeJS.Timeout|null = null
 
     turnStartTimestamp: number|null = null // timestamp of the last time the timer was started (to stay sync'ed with system clock)
 

@@ -1,4 +1,4 @@
-import type {ColorType} from "Color";
+import type {ColorType} from "@chess/Color";
 
 export type ChessPieceType = 'pawn'|'rook'|'knight'|'bishop'|'queen'|'king'
 

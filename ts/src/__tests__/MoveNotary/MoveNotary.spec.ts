@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from 'vitest'
-import {ChessMove} from "Move/MoveType/ChessMove";
-import {MoveNotary} from "MoveNotary/MoveNotary";
-import {Piece} from "Piece";
-import {PawnPromotionMove} from "Move/MoveType/PawnPromotionMove";
-import {CastlingMove} from "Move/MoveType/CastlingMove";
-import {MoveArbiter} from "MoveArbiter/MoveArbiter";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {MoveNotary} from "@chess/MoveNotary/MoveNotary";
+import {Piece} from "@chess/Piece";
+import {PawnPromotionMove} from "@chess/Move/MoveType/PawnPromotionMove";
+import {CastlingMove} from "@chess/Move/MoveType/CastlingMove";
+import {MoveArbiter} from "@chess/MoveArbiter/MoveArbiter";
 
 describe('MoveNotary' , () => {
 

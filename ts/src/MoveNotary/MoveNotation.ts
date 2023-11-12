@@ -1,5 +1,5 @@
-import type {ChessPieceType} from "Piece";
-import {ExtendedFen} from "Position/ExtendedFEN";
+import type {ChessPieceType} from "@chess/Piece";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
 
 export abstract class MoveNotation
 {
@@ -11,7 +11,7 @@ export abstract class MoveNotation
     // if any changes need to be made to notation after move
     // for SAN, the check and mate tokens are added
     // for Coordinate, nothing happens
-    // @ts-ignore
+    //@ts-ignore
     setFenAfter(fenAfter: ExtendedFen): void {}
 
     protected static getPromotionType(promotionType: string): ChessPieceType

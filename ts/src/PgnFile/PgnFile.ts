@@ -1,8 +1,8 @@
-import type {MoveHistory} from "Move/MoveHistory"
-import type {Game} from "Game/Game";
-import type {GameResult} from "Game/GameResult";
-import type {MadeMove} from "Move/MadeMove";
-import {MoveArbiter} from "MoveArbiter/MoveArbiter";
+import type {MoveHistory} from "@chess/Move/MoveHistory";
+import type {Game} from "@chess/Game/Game";
+import type {GameResult} from "@chess/Game/GameResult";
+import type {MadeMove} from "@chess/Move/MadeMove";
+import {MoveArbiter} from "@chess/MoveArbiter/MoveArbiter";
 
 export class PgnFile
 {

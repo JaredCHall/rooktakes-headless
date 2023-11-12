@@ -1,10 +1,10 @@
-import type {SquareType} from "Square/Square";
-import {Piece} from "Piece";
-import type {ChessPieceType} from "Piece";
-import {Square} from "Square/Square";
-import type {ColorType} from "Color";
-import {ExtendedFen} from "Position/ExtendedFEN";
-import {ChessMove} from "Move/MoveType/ChessMove";
+import type {SquareType} from "@chess/Square/Square";
+import {Piece} from "@chess/Piece";
+import type {ChessPieceType} from "@chess/Piece";
+import {Square} from "@chess/Square/Square";
+import type {ColorType} from "@chess/Color";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
 
 /**
  * A representation of the 64 squares

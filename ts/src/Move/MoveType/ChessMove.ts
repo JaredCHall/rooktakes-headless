@@ -1,6 +1,6 @@
-import {MoveStep} from "Move/MoveStep";
-import type {Piece} from "Piece";
-import type {SquareType} from "Square/Square";
+import {MoveStep} from "@chess/Move/MoveStep";
+import type {Piece} from "@chess/Piece";
+import type {SquareType} from "@chess/Square/Square";
 
 /**
  * This represents any full chess move

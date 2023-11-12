@@ -1,6 +1,6 @@
-import type {SquareType} from "Square/Square";
-import type {ChessPieceType} from "Piece";
-import {MoveNotation} from "MoveNotary/MoveNotation";
+import type {SquareType} from "@chess/Square/Square";
+import type {ChessPieceType} from "@chess/Piece";
+import {MoveNotation} from "@chess/MoveNotary/MoveNotation";
 
 export class CoordinateNotation extends MoveNotation {
 

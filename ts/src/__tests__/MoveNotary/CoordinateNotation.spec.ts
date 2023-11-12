@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import {CoordinateNotation} from "MoveNotary/CoordinateNotation";
+import {CoordinateNotation} from "@chess/MoveNotary/CoordinateNotation";
 
 describe('CoordinateNotation', () => {
 

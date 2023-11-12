@@ -1,9 +1,9 @@
-import type {SquareType} from "Square/Square";
-import {Square} from "Square/Square";
-import {Squares64} from "Position/Squares64";
-import {Piece} from "Piece";
-import {ExtendedFen} from "Position/ExtendedFEN";
-import type {ChessMove} from "Move/MoveType/ChessMove";
+import type {SquareType} from "@chess/Square/Square";
+import {Square} from "@chess/Square/Square";
+import {Squares64} from "@chess/Position/Squares64";
+import {Piece} from "@chess/Piece";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import type {ChessMove} from "@chess/Move/MoveType/ChessMove";
 
 /**
  * A representation of the 64 squares and all nearby out-of-bounds squares

@@ -1,5 +1,5 @@
-import type {ColorType} from "Color";
-import {Color} from "Color";
+import type {ColorType} from "@chess/Color";
+import {Color} from "@chess/Color";
 
 export class GameResult
 {

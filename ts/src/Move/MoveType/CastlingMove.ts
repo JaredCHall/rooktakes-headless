@@ -1,8 +1,8 @@
-import {MoveStep} from "Move/MoveStep";
-import {Piece} from "Piece";
-import {ChessMove} from "Move/MoveType/ChessMove";
-import {CastlesType} from "Move/MoveType/CastlesType";
-import type {SquareType} from "Square/Square";
+import {MoveStep} from "@chess/Move/MoveStep";
+import {Piece} from "@chess/Piece";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {CastlesType} from "@chess/Move/MoveType/CastlesType";
+import type {SquareType} from "@chess/Square/Square";
 
 export class CastlingMove extends ChessMove
 {

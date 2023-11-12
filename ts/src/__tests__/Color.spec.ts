@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import {Color} from "Color";
+import {Color} from "@chess/Color";
 
 describe('Color', () => {
   it('it sets correct static properties', () => {

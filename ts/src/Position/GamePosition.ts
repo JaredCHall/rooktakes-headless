@@ -1,6 +1,6 @@
-import type {ExtendedFen} from "Position/ExtendedFEN";
-import type {GameClock} from "GameClock/GameClock";
-import type {MaterialScores} from "Position/MaterialScores";
+import type {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import type {GameClock} from "@chess/GameClock/GameClock";
+import type {MaterialScores} from "@chess/Position/MaterialScores";
 
 export class GamePosition
 {

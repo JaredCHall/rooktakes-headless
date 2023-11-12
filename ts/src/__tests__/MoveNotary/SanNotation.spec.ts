@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
-import {SanNotation} from "MoveNotary/SanNotation";
-import {Piece} from "Piece";
-import {CastlesType} from "Move/MoveType/CastlesType";
+import {SanNotation} from "@chess/MoveNotary/SanNotation";
+import {Piece} from "@chess/Piece";
+import {CastlesType} from "@chess/Move/MoveType/CastlesType";
 
 describe('SanNotation' , () => {
 

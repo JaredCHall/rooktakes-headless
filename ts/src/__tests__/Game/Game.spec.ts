@@ -1,19 +1,19 @@
 import { describe, it, expect } from 'vitest'
-import {Game} from "Game/Game";
-import {ExtendedFen} from "Position/ExtendedFEN";
-import {Squares64} from "Position/Squares64";
-import {MoveArbiter} from "MoveArbiter/MoveArbiter";
-import {MoveHistory} from "Move/MoveHistory";
-import {Square} from "Square/Square";
-import {MoveList} from "Move/MoveList";
-import {ChessMove} from "Move/MoveType/ChessMove";
-import {Piece} from "Piece";
-import {MadeMove} from "Move/MadeMove";
-import {DoublePawnMove} from "Move/MoveType/DoublePawnMove";
-import {MoveEngine} from "MoveArbiter/MoveEngine";
-import {GameResult} from "Game/GameResult";
-import {Player} from "Player";
-import {GameOptions} from "Game/GameOptions";
+import {Game} from "@chess/Game/Game";
+import {ExtendedFen} from "@chess/Position/ExtendedFEN";
+import {Squares64} from "@chess/Position/Squares64";
+import {MoveArbiter} from "@chess/MoveArbiter/MoveArbiter";
+import {MoveHistory} from "@chess/Move/MoveHistory";
+import {Square} from "@chess/Square/Square";
+import {MoveList} from "@chess/Move/MoveList";
+import {ChessMove} from "@chess/Move/MoveType/ChessMove";
+import {Piece} from "@chess/Piece";
+import {MadeMove} from "@chess/Move/MadeMove";
+import {DoublePawnMove} from "@chess/Move/MoveType/DoublePawnMove";
+import {MoveEngine} from "@chess/MoveArbiter/MoveEngine";
+import {GameResult} from "@chess/Game/GameResult";
+import {Player} from "@chess/Player";
+import {GameOptions} from "@chess/Game/GameOptions";
 
 describe('Game', () => {
 
