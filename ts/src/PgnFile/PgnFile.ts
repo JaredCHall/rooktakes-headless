@@ -45,7 +45,6 @@ export class PgnFile
 
     private static hydrateSanNotations(game: Game): void
     {
-        console.log(game.moveHistory.startPosition.extendedFEN)
         const arbiter = MoveArbiter.fromFen(game.moveHistory.startPosition.extendedFEN)
         game.moveHistory.moves.forEach((move: MadeMove) => {
             const notation = arbiter.moveNotary.getNotation(move.move, 'SAN')

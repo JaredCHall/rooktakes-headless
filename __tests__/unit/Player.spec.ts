@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from 'vitest'
-import {Player} from "../Player";
+import {describe, it, expect} from 'vitest'
+import {Player} from "@chess/Player";
 
 describe('Player', () => {
 
