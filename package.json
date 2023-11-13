@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "vitest run unit --silent && tsc && resolve-tspaths",
-    "test": "vitest run"
+    "test:unit": "vitest run unit --silent",
+    "test:integration": "vitest run integration --silent",
+    "test:watch": "vitest --ui --coverage",
+    "build": "npm run test:unit && tsc && resolve-tspaths"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^0.34.6",
