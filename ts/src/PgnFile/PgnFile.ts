@@ -40,6 +40,11 @@ export class PgnFile
         file.content += '\n'
         file.content += file.#formatMoveList(game.moveHistory)
 
+        // ensure file ends with EOF
+        if(file.content.charAt(file.content.length - 1) !== '\n'){
+            file.content += '\n'
+        }
+
         return file
     }
 
