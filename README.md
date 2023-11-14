@@ -4,17 +4,15 @@ Headless Chess Package for NPM - Wire up your own user interface or AI
 
 # Development
 
-`npm run test:unit` - test against source typescript files
+`npm run test:unit` - run the unit tests
 
-`npm run test:integration` - test against compiled ES modules
+`npm run test:integration` - select tests against compiled ES modules and benchmarking
 
-`npm run test:watch` - run all tests in vitest ui
+`npm run test:watch` - run all tests in browser GUI with `vitest --ui`
 
 `npm run build` - build /dist ES modules
 
-
 # Usage
-
 
 ### Installation
 
