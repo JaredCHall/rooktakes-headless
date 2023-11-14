@@ -48,6 +48,42 @@ export class PgnFile
         return file
     }
 
+    static parse(fileContent: string)
+    {
+        // normalize new-lines
+        fileContent = fileContent.replace('\r\n','\n')
+        const lines = fileContent.split('\n')
+
+        let headerLines: string[] = []
+        let moveLines: string[] = []
+        let foundLastHeader = false
+        lines.forEach((line: string) => {
+            if(line.charAt(0) === '['){
+                headerLines.push(line)
+            }
+            if(!foundLastHeader && line === '\n'){
+                foundLastHeader = true
+            }
+            if(foundLastHeader){
+                moveLines.push(line)
+            }
+        })
+
+        let headers = {}
+        headerLines.forEach((line: string) => {
+            const parts = line.match(/^\[([a-zA-Z0-9]+) ["']([^"'+])["']$/)
+            if(parts === null){
+                throw new Error("Could not parse header line: "+line)
+            }
+            const key = parts[1] ?? null
+            const value = parts[2] ?? null
+
+            //@ts-ignore
+            headers[key] = value
+        })
+
+    }
+
     private static hydrateSanNotations(game: Game): void
     {
         const arbiter = MoveArbiter.fromFen(game.moveHistory.startPosition.extendedFEN)
