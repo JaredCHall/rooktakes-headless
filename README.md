@@ -2,6 +2,17 @@
 Headless Chess Package for NPM - Wire up your own user interface or AI
 
 
+# Development
+
+`npm run test:unit` - test against source typescript files
+
+`npm run test:integration` - test against compiled ES modules
+
+`npm run test:watch` - run all tests in vitest ui
+
+`npm run build` - build /dist ES modules
+
+
 # Usage
 
 
@@ -9,7 +20,7 @@ Headless Chess Package for NPM - Wire up your own user interface or AI
 
 `npm install mynpmaccount/rooktakes-headless`
 
-### Playing a Game
+### Play Game
 
 ```
 import {Game} from @mynpmaccount/rooktakes-headless/Game;
@@ -26,13 +37,4 @@ game.makeMove('Ke7'); // black king to e7
 
 ```
 
-# Development
-
-`npm run build` - build /dist ES modules
-
-`npm run test` - test against source typescript files
-
-`npm run dist-test` - test against compiled ES modules
-
-`npm run publish` - publish latest changes to npm
 

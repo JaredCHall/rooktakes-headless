@@ -19,6 +19,7 @@ import {GameOptions} from "@chess/Game/GameOptions";
 import {GameClock} from "@chess/GameClock/GameClock";
 import {CoordinateNotation} from "@chess/MoveNotary/CoordinateNotation";
 import {SanNotation} from "@chess/MoveNotary/SanNotation";
+import {PgnFile} from "@chess/PgnFile/PgnFile";
 
 export class Game
 {
@@ -192,6 +193,10 @@ export class Game
 
         this.#determineGameResult(madeMove)
 
+    }
+
+    getPGNFileContent(): string {
+        return PgnFile.make(this).content
     }
 
     undoLastMove(): void {

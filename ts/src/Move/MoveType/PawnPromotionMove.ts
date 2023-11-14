@@ -1,8 +1,7 @@
 import {ChessMove} from "@chess/Move/MoveType/ChessMove";
 import {MoveStep} from "@chess/Move/MoveStep";
 import {Square} from "@chess/Square/Square";
-import {Piece} from "@chess/Piece";
-import type {ChessPieceType} from "@chess/Piece";
+import {type ChessPieceType, Piece} from "@chess/Piece";
 import type {SquareType} from "@chess/Square/Square";
 
 
@@ -14,6 +13,10 @@ export class PawnPromotionMove extends ChessMove
     constructor(chessMove: ChessMove, promoteToType: ChessPieceType = 'queen') {
         super(chessMove.oldSquare, chessMove.newSquare, chessMove.movingPiece, chessMove.capturedPiece)
         this.promoteToType = promoteToType
+    }
+
+    getPromoteToType(): ChessPieceType | null {
+        return this.promoteToType
     }
 
     getMoveSteps(): Array<MoveStep> {

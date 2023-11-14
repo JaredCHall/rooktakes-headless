@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect} from 'vitest'
 import {MoveFactory} from "@chess/MoveNotary/MoveFactory";
 import {MoveArbiter} from "@chess/MoveArbiter/MoveArbiter";
 import {CoordinateNotation} from "@chess/MoveNotary/CoordinateNotation";
@@ -6,7 +6,6 @@ import {SanNotation} from "@chess/MoveNotary/SanNotation";
 import {PawnPromotionMove} from "@chess/Move/MoveType/PawnPromotionMove";
 import {ChessMove} from "@chess/Move/MoveType/ChessMove";
 import {Piece} from "@chess/Piece";
-import {MoveNotary} from "@chess/MoveNotary/MoveNotary";
 
 describe('MoveFactory' , () => {
 
@@ -63,11 +62,11 @@ describe('MoveFactory' , () => {
 
         expect(() => {
             factory.make(new CoordinateNotation('g7','g6'))
-        }).toThrowError('Move is illegal.')
+        }).toThrowError('Move is illegal: g7g6')
 
         expect(() => {
             factory.make(SanNotation.fromInput('a7','white'))
-        }).toThrowError('Move is illegal.')
+        }).toThrowError('Move is illegal: a7')
 
     })
 

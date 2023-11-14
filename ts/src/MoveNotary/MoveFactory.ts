@@ -58,49 +58,81 @@ export class MoveFactory {
             })
 
         if(possibleMoves.length === 0){
-            throw new Error('Move is illegal.')
+            throw new Error(`Move is illegal: ` + notation.serialize())
         }
 
         if(possibleMoves.length === 1){
             return possibleMoves[0]
         }
 
+        let fileMatches: ChessMove[] = []
+        let rankMatches: ChessMove[] = []
+        let rankAndFileMatches: ChessMove[] = []
+
         // apply disambiguation
-        possibleMoves = possibleMoves.filter((move: ChessMove) => {
+        possibleMoves.forEach((move: ChessMove) => {
             const [candidateStartFile, candidateStartRank] = Square.getFileAndRank(move.oldSquare)
 
             const matchesFile = notation.startFile && (notation.startFile === candidateStartFile)
             const matchesRank = notation.startRank && (notation.startRank === candidateStartRank)
-
-            if(notation.startFile && !notation.startRank) {
-                return matchesFile
-            }else if(notation.startRank && !notation.startFile) {
-                return matchesRank
-            }else if(notation.startFile && notation.startRank){
-                return matchesFile && matchesRank
+            if(matchesFile){
+                fileMatches.push(move)
+            }
+            if(matchesRank){
+                rankMatches.push(move)
+            }
+            if(matchesRank && matchesFile){
+                rankAndFileMatches.push(move)
             }
         })
 
-        if(possibleMoves.length === 0){
-            throw new Error('Move disambiguation invalid.')
+        // should disambiguate on file first
+        if(fileMatches.length === 1){
+            if(notation.startRank && notation.startRank !== Square.getFileAndRank(fileMatches[0].oldSquare)[1]){
+                throw new Error(`Invalid disambiguation: "${notation.serialize()}". Unexpected rank.`)
+            }
+            notation.startRank = null;
+
+            return fileMatches[0]
         }
 
-        if(possibleMoves.length === 1){
-            return possibleMoves[0]
+        if(!notation.startRank && !notation.startFile){
+            throw new Error('Move requires disambiguation')
         }
 
-        throw new Error('Move is ambiguous.')
+        if(rankMatches.length === 1){
+
+            if(notation.startFile && notation.startFile !== Square.getFileAndRank(rankMatches[0].oldSquare)[0]){
+                throw new Error(`Invalid disambiguation: "${notation.serialize()}". Unexpected file.`)
+            }
+            notation.startFile = null;
+
+            return rankMatches[0]
+        }
+
+        if(rankAndFileMatches.length === 1){
+            return rankAndFileMatches[0]
+        }
+
+        if(notation.startFile && !notation.startRank && fileMatches.length > 1){
+            throw new Error('Move is ambiguous.')
+        }
+
+        if(notation.startRank && !notation.startFile && rankMatches.length > 1){
+            throw new Error('Move is ambiguous.')
+        }
+
+        throw new Error('Move disambiguation invalid.')
     }
 
     #fromCoordinateNotation(notation: CoordinateNotation): ChessMove
     {
         const possibleMoves = this.moveArbiter
-            .getLegalMoves(notation.oldSquare)
-            .filter((possibleMove: ChessMove) => possibleMove.newSquare === notation.newSquare)
+            .getLegalMoves(notation.oldSquare, (possibleMove: ChessMove) => possibleMove.newSquare === notation.newSquare )
 
         const move = possibleMoves.first()
         if(!move){
-            throw new Error('Move is illegal.')
+            throw new Error(`Move is illegal: ` + notation.serialize())
         }
 
         return move

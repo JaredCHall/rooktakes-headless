@@ -1,6 +1,7 @@
 import {MoveStep} from "@chess/Move/MoveStep";
 import type {Piece} from "@chess/Piece";
 import type {SquareType} from "@chess/Square/Square";
+import {ChessPieceType} from "@chess/Piece";
 
 /**
  * This represents any full chess move
@@ -20,6 +21,11 @@ export class ChessMove {
         this.newSquare = newSquare
         this.movingPiece = movingPiece
         this.capturedPiece = capturedPiece
+    }
+
+    getPromoteToType(): null|ChessPieceType
+    {
+        return null
     }
 
     getMoveSteps(): Array<MoveStep>

@@ -2,74 +2,117 @@ import {describe, it} from 'vitest'
 
 //@ts-ignore
 import {Game} from "@compiled/Game/Game";
+//@ts-ignore
+import {MadeMove} from "@compiled/Move/MadeMove";
+//@ts-ignore
+import {RunTimeProfiler} from "../RunTimeProfiler";
+
 
 
 describe('Benchmark', () => {
 
     it('Plays the opera game 100 times', () => {
-
-
-
-        const playOperaGame = () => {
+        const playGame = () => {
             const game = Game.makeNewGame();
 
-            game.makeMove('e4')
-            game.makeMove('e5')
-            game.makeMove('Nf3')
-            game.makeMove('d6')
+            const moves = [
+                'e4',    'e5',   'Nf3',   'd6',
+                'd4',    'Bg4',  'dxe5',  'Bxf3',
+                'Qxf3',  'dxe5', 'Bc4',   'Nf6',
+                'Qb3',   'Qe7',  'Nc3',   'c6',
+                'Bg5',   'b5',   'Nxb5',  'cxb5',
+                'Bxb5+', 'Nbd7', 'O-O-O', 'Rd8',
+                'Rxd7',  'Rxd7', 'Rd1',   'Qe6',
+                'Bxd7+', 'Nxd7', 'Qb8+',  'Nxb8',
+                'Rd8#'
+            ]
 
-            game.makeMove('d4')
-            game.makeMove('Bg4')
-
-            game.makeMove('dxe5')
-            game.makeMove('Bxf3')
-
-            game.makeMove('Qxf3')
-            game.makeMove('dxe5')
-
-            game.makeMove('Bc4')
-            game.makeMove('Nf6')
-
-            game.makeMove('Qb3')
-            game.makeMove('Qe7')
-
-            game.makeMove('Nc3')
-            game.makeMove('c6')
-
-            game.makeMove('Bg5')
-            game.makeMove('b5')
-
-            game.makeMove('Nxb5')
-            game.makeMove('cxb5')
-
-            game.makeMove('Bxb5')
-            game.makeMove('Nbd7')
-
-            game.makeMove('O-O-O')
-            game.makeMove('Rd8')
-
-            game.makeMove('Rxd7')
-            game.makeMove('Rxd7')
-
-            game.makeMove('Rd1')
-            game.makeMove('Qe6')
-
-            game.makeMove('Bxd7')
-            game.makeMove('Nxd7')
-
-            game.makeMove('Qb8')
-            game.makeMove('Nxb8')
-
-            game.makeMove('Rd8')
+            moves.forEach((move) => {
+                game.makeMove(move)
+            })
         }
 
-        const startTime = (new Date).getTime()
+        const benchmark = new RunTimeProfiler('Opera Game [SAN]', 100)
+        benchmark.start()
         for(let i = 0; i < 100; i++) {
-            playOperaGame()
+            playGame()
         }
-        const elapsedTime = (new Date()).getTime() - startTime
-        console.log(`Opera Game: ${elapsedTime} ms`)
+        benchmark.stop()
+        benchmark.print()
 
+    })
+
+    it('Plays the opera game is coordinate notation', () => {
+        const playGame = () => {
+            const game = Game.makeNewGame();
+            game.setInputType('Coordinate')
+
+            const moves = [
+                'e2e4', 'e7e5', 'g1f3', 'd7d6',
+                'd2d4', 'c8g4', 'd4e5', 'g4f3',
+                'd1f3', 'd6e5', 'f1c4', 'g8f6',
+                'f3b3', 'd8e7', 'b1c3', 'c7c6',
+                'c1g5', 'b7b5', 'c3b5', 'c6b5',
+                'c4b5', 'b8d7', 'e1c1', 'a8d8',
+                'd1d7', 'd8d7', 'h1d1', 'e7e6',
+                'b5d7', 'f6d7', 'b3b8', 'd7b8',
+                'd1d8'
+            ]
+
+            moves.forEach((move) => {
+                   game.makeMove(move)
+            })
+        }
+
+        const benchmark = new RunTimeProfiler('Opera Game [Coordinate]', 100)
+        benchmark.start()
+        for(let i = 0; i < 100; i++) {
+            playGame()
+        }
+        benchmark.stop()
+        benchmark.print()
+
+    })
+
+
+
+
+
+    it('plays immortal game in coordinate notation' , () => {
+        const playGame = () => {
+            const game = Game.makeNewGame();
+            game.setInputType('Coordinate')
+
+            const moves = [
+                'c2c4', 'e7e6', 'g1f3', 'd7d5', 'd2d4', 'g8f6',
+                'b1c3', 'f8e7', 'c1g5', 'e8g8', 'e2e3', 'h7h6',
+                'g5h4', 'b7b6', 'c4d5', 'f6d5', 'h4e7', 'd8e7',
+                'c3d5', 'e6d5', 'a1c1', 'c8e6', 'd1a4', 'c7c5',
+                'a4a3', 'f8c8', 'f1b5', 'a7a6', 'd4c5', 'b6c5',
+                'e1g1', 'a8a7', 'b5e2', 'b8d7', 'f3d4', 'e7f8',
+                'd4e6', 'f7e6', 'e3e4', 'd5d4', 'f2f4', 'f8e7',
+                'e4e5', 'c8b8', 'e2c4', 'g8h8', 'a3h3', 'd7f8',
+                'b2b3', 'a6a5', 'f4f5', 'e6f5', 'f1f5', 'f8h7',
+                'c1f1', 'e7d8', 'h3g3', 'a7e7', 'h2h4', 'b8b7',
+                'e5e6', 'b7c7', 'g3e5', 'd8e8', 'a2a4', 'e8d8',
+                'f1f2', 'd8e8', 'f2f3', 'e8d8', 'c4d3', 'd8e8',
+                'e5e4', 'h7f6', 'f5f6', 'g7f6', 'f3f6', 'h8g8',
+                'd3c4', 'g8h8', 'e4f4'
+            ]
+
+            moves.forEach((move) => {
+                game.makeMove(move)
+            })
+            game.setResigns('black')
+        }
+
+        const benchmark = new RunTimeProfiler('Immortal Game [Coordinate]', 100)
+        benchmark.start()
+        for(let i = 0; i < 100; i++) {
+            playGame()
+        }
+        benchmark.stop()
+        benchmark.print()
     })
 
     it('Plays the immortal game 100 times', () => {
@@ -77,138 +120,36 @@ describe('Benchmark', () => {
         const playGame = () => {
             const game = Game.makeNewGame();
 
-            game.makeMove('c4')
-            game.makeMove('e6')
+            const moves = [
+                'c4',   'e6',   'Nf3',  'd5',   'd4',   'Nf6',  'Nc3',
+                'Be7',  'Bg5',  'O-O',  'e3',   'h6',   'Bh4',  'b6',
+                'cxd5', 'Nxd5', 'Bxe7', 'Qxe7', 'Nxd5', 'exd5', 'Rc1',
+                'Be6',  'Qa4',  'c5',   'Qa3',  'Rc8',  'Bb5',  'a6',
+                'dxc5', 'bxc5', 'O-O',  'Ra7',  'Be2',  'Nd7',  'Nd4',
+                'Qf8',  'Nxe6', 'fxe6', 'e4',   'd4',   'f4',   'Qe7',
+                'e5',   'Rb8',  'Bc4',  'Kh8',  'Qh3',  'Nf8',  'b3',
+                'a5',   'f5',   'exf5', 'Rxf5', 'Nh7',  'Rcf1', 'Qd8',
+                'Qg3',  'Re7',  'h4',   'R8b7', 'e6',   'Rbc7', 'Qe5',
+                'Qe8',  'a4',   'Qd8',  'R1f2', 'Qe8',  'R2f3', 'Qd8',
+                'Bd3',  'Qe8',  'Qe4',  'Nf6',  'Rxf6', 'gxf6', 'Rxf6',
+                'Kg8',  'Bc4',  'Kh8',  'Qf4'
+            ]
 
-            game.makeMove('Nf3')
-            game.makeMove('d5')
-
-            game.makeMove('d4')
-            game.makeMove('Nf6')
-
-            game.makeMove('Nc3')
-            game.makeMove('Be7')
-
-            game.makeMove('Bg5')
-            game.makeMove('O-O')
-
-            game.makeMove('e3')
-            game.makeMove('h6')
-
-            game.makeMove('Bh4')
-            game.makeMove('b6')
-
-            game.makeMove('cxd5')
-            game.makeMove('Nxd5')
-
-            game.makeMove('Bxe7')
-            game.makeMove('Qxe7')
-
-            game.makeMove('Nxd5')
-            game.makeMove('exd5')
-
-            game.makeMove('Rc1')
-            game.makeMove('Be6')
-
-            game.makeMove('Qa4')
-            game.makeMove('c5')
-
-            game.makeMove('Qa3')
-            game.makeMove('Rc8')
-
-            game.makeMove('Bb5')
-            game.makeMove('a6')
-
-            game.makeMove('dxc5')
-            game.makeMove('bxc5')
-
-            game.makeMove('O-O')
-            game.makeMove('Ra7')
-
-            game.makeMove('Be2')
-            game.makeMove('Nd7')
-
-            game.makeMove('Nd4')
-            game.makeMove('Qf8')
-
-            game.makeMove('Nxe6')
-            game.makeMove('fxe6')
-
-            game.makeMove('e4')
-            game.makeMove('d4')
-
-            game.makeMove('f4')
-            game.makeMove('Qe7')
-
-            game.makeMove('e5')
-            game.makeMove('Rb8')
-
-            game.makeMove('Bc4')
-            game.makeMove('Kh8')
-
-            game.makeMove('Qh3')
-            game.makeMove('Nf8')
-
-            game.makeMove('b3')
-            game.makeMove('a5')
-
-            game.makeMove('f5')
-            game.makeMove('exf5')
-
-            game.makeMove('Rxf5')
-            game.makeMove('Nh7')
-
-            game.makeMove('Rcf1')
-            game.makeMove('Qd8')
-
-            game.makeMove('Qg3')
-            game.makeMove('Re7')
-
-            game.makeMove('h4')
-            game.makeMove('R8b7')
-
-            game.makeMove('e6')
-            game.makeMove('Rbc7')
-
-            game.makeMove('Qe5')
-            game.makeMove('Qe8')
-
-            game.makeMove('a4')
-            game.makeMove('Qd8')
-
-            game.makeMove('R1f2')
-            game.makeMove('Qe8')
-
-            game.makeMove('R2f3')
-            game.makeMove('Qd8')
-
-            game.makeMove('Bd3')
-            game.makeMove('Qe8')
-
-            game.makeMove('Qe4')
-            game.makeMove('Nf6')
-
-            game.makeMove('Rxf6')
-            game.makeMove('gxf6')
-
-            game.makeMove('Rxf6')
-            game.makeMove('Kg8')
-
-            game.makeMove('Bc4')
-            game.makeMove('Kh8')
-
-            game.makeMove('Qf4')
+            moves.forEach((move) => {
+                game.makeMove(move)
+            })
             game.setResigns('black')
         }
 
-        const startTime = (new Date).getTime()
+
+        const benchmark = new RunTimeProfiler('Immortal Game [SAN]', 100)
+        benchmark.start()
         for(let i = 0; i < 100; i++) {
             playGame()
         }
-        const elapsedTime = (new Date()).getTime() - startTime
-        console.log(`Immortal Game: ${elapsedTime} ms`)
+        benchmark.stop()
+        benchmark.print()
 
     })
-
 
 })

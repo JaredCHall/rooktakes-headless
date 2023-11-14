@@ -17,11 +17,9 @@ export class SanNotation extends MoveNotation {
 
     readonly promoteToType: ChessPieceType|null
 
-    // for disambiguation on file
-    readonly startFile: string|null
+    startFile: string|null // for disambiguation on file
 
-    // for disambiguation on rank
-    readonly startRank: number|null
+    startRank: number|null // for disambiguation on rank
 
     checkMateToken: '#'|'+'|null
 
@@ -98,6 +96,18 @@ export class SanNotation extends MoveNotation {
         const newSquare = parts[5]
         const promotionType = parts[6] ? this.getPromotionType(parts[6].replace(/=/,'')) : null
         const checkMateToken = parts[7] || null
+
+        if(pieceType === 'pawn'){
+            if(isCapture){
+                if(startRank){
+                    throw new Error('Rank disambiguation not allowed for pawn captures. Move: ' + input)
+                }
+                if(!startFile){
+                    throw new Error('Must include file disambiguation when making a pawn capture. Move: ' + input)
+                }
+            }
+        }
+
 
         return new SanNotation(
             //@ts-ignore

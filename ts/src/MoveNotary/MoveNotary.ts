@@ -24,8 +24,7 @@ export class MoveNotary {
 
     getCoordinateNotation(move: ChessMove): CoordinateNotation
     {
-        const promoteType = move instanceof PawnPromotionMove ? move.promoteToType : null
-        return new CoordinateNotation(move.oldSquare, move.newSquare, promoteType)
+        return new CoordinateNotation(move.oldSquare, move.newSquare, move.getPromoteToType())
     }
 
     // get the SAN notation for a move in the current position

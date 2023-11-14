@@ -2,6 +2,7 @@ import type {ChessMove} from "@chess/Move/MoveType/ChessMove";
 import type {ExtendedFen} from "@chess/Position/ExtendedFEN";
 import type {ColorType} from "@chess/Color";
 import type {GamePosition} from "@chess/Position/GamePosition";
+import {CoordinateNotation} from "@chess/MoveNotary/CoordinateNotation";
 
 export class MadeMove {
 
@@ -28,7 +29,20 @@ export class MadeMove {
 
     getNotation(notationType: 'SAN'|'Coordinate'): string|null
     {
-        return notationType !== 'SAN' ? this.coordinateNotation : this.sanNotation
+        return notationType !== 'SAN' ? this.getCoordinateNotation() : this.sanNotation
+    }
+
+    getCoordinateNotation(): string
+    {
+        if(this.coordinateNotation){
+           return this.coordinateNotation
+        }
+
+        return this.coordinateNotation = new CoordinateNotation(
+            this.move.oldSquare,
+            this.move.newSquare,
+            this.move.getPromoteToType()
+        ).serialize()
     }
 
     setSanNotation(notation: string)

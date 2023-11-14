@@ -11,6 +11,7 @@ describe('PlaysTestGames', () => {
 
     it('Unknown - Black Resigns Early', () => {
         const game = Game.makeNewGame();
+        game.setEventDate(new Date(0))
         game.setInputType('Coordinate')
         game.makeMove('e2e4');
         game.makeMove('d7d5');
@@ -22,7 +23,7 @@ describe('PlaysTestGames', () => {
         const file = PgnFile.make(game)
         expect(file.content).toEqual(`[Event "Casual Game"]
 [Site "Sol System"]
-[Date "2023.11.12"]
+[Date "1969.12.31"]
 [Round "1"]
 [Result "1-0"]
 [Termination "Normal"]
@@ -39,6 +40,7 @@ describe('PlaysTestGames', () => {
 
     it('Carsen and Nakamura bong cloud', () => {
         const game = Game.makeNewGame();
+        game.setEventDate(new Date(0))
         game.setPlayer(new Player('white', 'Magnus Carlsen', 2881))
         game.setPlayer(new Player('black', 'Hikaru Nakamura', 2829))
         game.setEventName('Magnus Carlsen Invitational 2021')
@@ -63,7 +65,7 @@ describe('PlaysTestGames', () => {
         const file = PgnFile.make(game)
         expect(file.content).toEqual(`[Event "Magnus Carlsen Invitational 2021"]
 [Site "Sol System"]
-[Date "2023.11.12"]
+[Date "1969.12.31"]
 [Round "10"]
 [Result "1/2-1/2"]
 [Termination "Normal"]
@@ -84,6 +86,7 @@ describe('PlaysTestGames', () => {
 
     it('Morphy\'s Opera Game' , () => {
         const game = Game.makeNewGame();
+        game.setEventDate(new Date(0))
         game.setPlayer(new Player('white', 'Paul Morphy'))
         game.setPlayer(new Player('black', 'Duke of Brunswich and Count Isouard'))
         game.setEventDate(new Date('1858-10-31'))
