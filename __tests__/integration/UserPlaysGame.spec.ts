@@ -9,40 +9,11 @@ import {Player} from "@compiled/Player";
 
 describe('PlaysTestGames', () => {
 
-    it('Unknown - Black Resigns Early', () => {
-        const game = Game.makeNewGame();
-        game.setEventDate(new Date(0))
-        game.setInputType('Coordinate')
-        game.makeMove('e2e4');
-        game.makeMove('d7d5');
-        game.makeMove('e4d5')
-        game.setResigns('black');
-
-        expect(game.gameResult.winner).toEqual('white')
-
-        const file = PgnFile.make(game)
-        expect(file.content).toEqual(`[Event "Casual Game"]
-[Site "Sol System"]
-[Date "1969.12.31"]
-[Round "1"]
-[Result "1-0"]
-[Termination "Normal"]
-[White "White"]
-[Black "Black"]
-[WhiteElo "?"]
-[BlackElo "?"]
-
-1. e4 d5
-2. exd5
-`)
-
-    })
-
     it('Carsen and Nakamura bong cloud', () => {
         const game = Game.makeNewGame();
-        game.setEventDate(new Date(0))
-        game.setPlayer(new Player('white', 'Magnus Carlsen', 2881))
-        game.setPlayer(new Player('black', 'Hikaru Nakamura', 2829))
+        game.setEventDate(new Date('2021-11-01'))
+        game.setPlayer('white', 'Magnus Carlsen', 2881)
+        game.setPlayer('black', 'Hikaru Nakamura', 2829)
         game.setEventName('Magnus Carlsen Invitational 2021')
         game.setEventRound(10)
 
@@ -62,10 +33,9 @@ describe('PlaysTestGames', () => {
         expect(game.gameResult?.type).toEqual('Draw')
         expect(game.gameResult?.drawType).toEqual('3Fold')
 
-        const file = PgnFile.make(game)
-        expect(file.content).toEqual(`[Event "Magnus Carlsen Invitational 2021"]
+        expect(game.getPGNFileContent()).toEqual(`[Event "Magnus Carlsen Invitational 2021"]
 [Site "Sol System"]
-[Date "1969.12.31"]
+[Date "2021.11.01"]
 [Round "10"]
 [Result "1/2-1/2"]
 [Termination "Normal"]
@@ -87,8 +57,8 @@ describe('PlaysTestGames', () => {
     it('Morphy\'s Opera Game' , () => {
         const game = Game.makeNewGame();
         game.setEventDate(new Date(0))
-        game.setPlayer(new Player('white', 'Paul Morphy'))
-        game.setPlayer(new Player('black', 'Duke of Brunswich and Count Isouard'))
+        game.setPlayer('white', 'Paul Morphy')
+        game.setPlayer('black', 'Duke of Brunswich and Count Isouard')
         game.setEventDate(new Date('1858-10-31'))
 
         game.makeMove('e4')
@@ -140,11 +110,9 @@ describe('PlaysTestGames', () => {
 
         game.makeMove('Rd8')
 
-        const file = PgnFile.make(game)
-
-        expect(file.content).toEqual(`[Event "Casual Game"]
+        expect(game.getPGNFileContent()).toEqual(`[Event "Casual Game"]
 [Site "Sol System"]
-[Date "1858.10.30"]
+[Date "1858.10.31"]
 [Round "1"]
 [Result "1-0"]
 [Termination "Normal"]

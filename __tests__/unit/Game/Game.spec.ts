@@ -31,10 +31,10 @@ describe('Game', () => {
         expect(board.moveEngine).toBeInstanceOf(MoveEngine)
         expect(board.playerWhite).toBeInstanceOf(Player)
         expect(board.playerBlack).toBeInstanceOf(Player)
-        expect(board.material.white).toEqual(39)
-        expect(board.material.black).toEqual(39)
-        expect(board.gameClock.timerBlack.timeRemaining).toEqual(900)
-        expect(board.gameClock.timerWhite.timeRemaining).toEqual(900)
+        expect(board.material?.white).toEqual(39)
+        expect(board.material?.black).toEqual(39)
+        expect(board.gameClock?.timerBlack.timeRemaining).toEqual(900)
+        expect(board.gameClock?.timerWhite.timeRemaining).toEqual(900)
     })
 
     it('it makes a new game', () => {
@@ -148,14 +148,12 @@ describe('Game', () => {
 
     it('it handles setPlayer', () => {
         const board = Game.makeNewGame()
-        const alice = new Player('white','Alice')
-        const claire = new Player('black','Claire')
 
-        board.setPlayer(alice)
-        board.setPlayer(claire)
+        board.setPlayer('white','Alice')
+        board.setPlayer('black','Claire')
 
-        expect(board.playerWhite).toBe(alice)
-        expect(board.playerBlack).toBe(claire)
+        expect(board.playerWhite).toEqual(new Player('white','Alice'))
+        expect(board.playerBlack).toEqual(new Player('black','Claire'))
     })
 
     it('it displays made move from history', () => {
@@ -211,24 +209,24 @@ describe('Game', () => {
         board = new Game('7k/5K2/6PP/8/8/8/8/3R4 w - - 0 1')
         board.makeMove(new ChessMove('d1','d8', Piece.rookWhite()))
         expect(board.gameResult).toBeInstanceOf(GameResult)
-        expect(board.gameResult.type).toEqual('Mate')
-        expect(board.gameResult.winner).toEqual('white')
+        expect(board.gameResult?.type).toEqual('Mate')
+        expect(board.gameResult?.winner).toEqual('white')
 
         // stalemate
         board = new Game('7k/5K2/6P1/7P/8/8/8/8 w - - 0 1')
         board.makeMove(new ChessMove('h5','h6', Piece.pawnWhite()))
         expect(board.gameResult).toBeInstanceOf(GameResult)
-        expect(board.gameResult.type).toEqual('Draw')
-        expect(board.gameResult.winner).toBeNull()
-        expect(board.gameResult.drawType).toEqual('Stalemate')
+        expect(board.gameResult?.type).toEqual('Draw')
+        expect(board.gameResult?.winner).toBeNull()
+        expect(board.gameResult?.drawType).toEqual('Stalemate')
 
         // 50 move rule
         board = new Game('7k/5K2/6P1/7P/8/8/8/8 w - - 49 1')
         board.makeMove(new ChessMove('f7','f6', Piece.kingWhite()))
         expect(board.gameResult).toBeInstanceOf(GameResult)
-        expect(board.gameResult.type).toEqual('Draw')
-        expect(board.gameResult.winner).toBeNull()
-        expect(board.gameResult.drawType).toEqual('50Move')
+        expect(board.gameResult?.type).toEqual('Draw')
+        expect(board.gameResult?.winner).toBeNull()
+        expect(board.gameResult?.drawType).toEqual('50Move')
 
     })
 
@@ -252,9 +250,9 @@ describe('Game', () => {
         board.makeMove(blackBongClouds) // 3rd repetition
 
         expect(board.gameResult).toBeInstanceOf(GameResult)
-        expect(board.gameResult.type).toEqual('Draw')
-        expect(board.gameResult.winner).toBeNull()
-        expect(board.gameResult.drawType).toEqual('3Fold')
+        expect(board.gameResult?.type).toEqual('Draw')
+        expect(board.gameResult?.winner).toBeNull()
+        expect(board.gameResult?.drawType).toEqual('3Fold')
 
         expect(() => board.makeMove(whiteReconsiders)).toThrowError('Cannot make move. Game is over.')
     })
@@ -263,16 +261,16 @@ describe('Game', () => {
 
         let board
         board = new Game('2kr1bnr/ppp1pppp/2n5/5q2/2PP4/4BB2/PP3PPP/RN1QK2R b KQ - 0 8')
-        expect(board.material.white).toEqual(35)
-        expect(board.material.black).toEqual(35)
+        expect(board.material?.white).toEqual(35)
+        expect(board.material?.black).toEqual(35)
 
         board = new Game('2kr1bnr/ppp1pppp/8/8/2P3q1/4B3/PPQ2PPP/RN3RK1 b - - 1 11')
-        expect(board.material.white).toEqual(31)
-        expect(board.material.black).toEqual(32)
+        expect(board.material?.white).toEqual(31)
+        expect(board.material?.black).toEqual(32)
 
         board = new Game('3r2r1/5k1p/qpQbp1p1/5pB1/P7/5N1P/5PP1/3R2K1 b - - 4 32')
-        expect(board.material.white).toEqual(24)
-        expect(board.material.black).toEqual(27)
+        expect(board.material?.white).toEqual(24)
+        expect(board.material?.black).toEqual(27)
     })
 
 })

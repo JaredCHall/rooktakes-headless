@@ -25,15 +25,18 @@ Headless Chess Package for NPM - Wire up your own user interface or AI
 ```
 import {Game} from @mynpmaccount/rooktakes-headless/Game;
 
-const fenNumber = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
-const game = new Game(fenNumber);
+const game = Game.makeNewGame();
 
-game.setNotationType('SAN'); // switch from default coordinate notation to standard algebraic notation
+game.setEventDate(new Date('2021-11-01'))
+game.setPlayer('white', 'Magnus Carlsen', 2881)
+game.setPlayer('black', 'Hikaru Nakamura', 2829)
+game.setEventName('Magnus Carlsen Invitational 2021')
+game.setEventRound(10)
 
-game.makeMove('e4'); // white pawn to e4
-game.makeMove('e5'); // black pawn to e5
-game.makeMove('Ke2'); // white king to e2
-game.makeMove('Ke7'); // black king to e7
+game.makeMove('e4')
+game.makeMove('e5')
+game.makeMove('Ke2')
+game.makeMove('Ke7')
 
 ```
 

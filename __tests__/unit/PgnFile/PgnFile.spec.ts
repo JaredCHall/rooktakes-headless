@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import {PgnFile} from "@chess/PgnFile/PgnFile";
 import {Game} from "@chess/Game/Game";
-import {Player} from "@chess/Player";
+
 
 describe('PgnFile' , () => {
 
@@ -26,7 +25,7 @@ describe('PgnFile' , () => {
 
         expect(game.getPGNFileContent()).toEqual(`[Event "Casual Game"]
 [Site "Sol System"]
-[Date "1969.12.31"]
+[Date "1970.01.01"]
 [Round "1"]
 [Result "0-1"]
 [Termination "Normal"]
@@ -61,7 +60,7 @@ describe('PgnFile' , () => {
 
         expect(game.getPGNFileContent()).toEqual(`[Event "Casual Game"]
 [Site "Sol System"]
-[Date "1969.12.31"]
+[Date "1970.01.01"]
 [Round "1"]
 [Result "0-1"]
 [Termination "Normal"]
@@ -82,14 +81,14 @@ describe('PgnFile' , () => {
         const game = Game.makeNewGame()
         game.setEventDate(new Date(0))
 
-        game.setPlayer(new Player('white','player 1',2000))
-        game.setPlayer(new Player('black','player 2',2400))
+        game.setPlayer('white','player 1',2000)
+        game.setPlayer('black','player 2',2400)
 
         game.setDraw();
 
         expect(game.getPGNFileContent()).toEqual(`[Event "Casual Game"]
 [Site "Sol System"]
-[Date "1969.12.31"]
+[Date "1970.01.01"]
 [Round "1"]
 [Result "1/2-1/2"]
 [Termination "Normal"]
@@ -107,7 +106,7 @@ describe('PgnFile' , () => {
 
         expect(game.getPGNFileContent()).toEqual(`[Event "Casual Game"]
 [Site "Sol System"]
-[Date "1969.12.31"]
+[Date "1970.01.01"]
 [Round "1"]
 [Result "*"]
 [White "White"]
@@ -126,7 +125,7 @@ describe('PgnFile' , () => {
 
         expect(game.getPGNFileContent()).toEqual(`[Event "Casual Game"]
 [Site "Sol System"]
-[Date "1969.12.31"]
+[Date "1970.01.01"]
 [Round "1"]
 [Result "1-0"]
 [Termination "Time Forfeit"]
@@ -142,8 +141,8 @@ describe('PgnFile' , () => {
 
     it('Carsen and Nakamura bong cloud', () => {
         const game = Game.makeNewGame();
-        game.setPlayer(new Player('white', 'Magnus Carlsen', 2881))
-        game.setPlayer(new Player('black', 'Hikaru Nakamura', 2829))
+        game.setPlayer('white', 'Magnus Carlsen', 2881)
+        game.setPlayer('black', 'Hikaru Nakamura', 2829)
         game.setEventDate(new Date(0))
         game.setEventName('Magnus Carlsen Invitational 2021')
         game.setEventRound(10)
@@ -166,7 +165,7 @@ describe('PgnFile' , () => {
 
         expect(game.getPGNFileContent()).toEqual(`[Event "Magnus Carlsen Invitational 2021"]
 [Site "Sol System"]
-[Date "1969.12.31"]
+[Date "1970.01.01"]
 [Round "10"]
 [Result "1/2-1/2"]
 [Termination "Normal"]
@@ -188,8 +187,8 @@ describe('PgnFile' , () => {
 
     it('plays the Opera Game' , () => {
         const game = Game.makeNewGame();
-        game.setPlayer(new Player('white', 'Paul Morphy'))
-        game.setPlayer(new Player('black', 'Duke of Brunswich and Count Isouard'))
+        game.setPlayer('white', 'Paul Morphy')
+        game.setPlayer('black', 'Duke of Brunswich and Count Isouard')
         game.setEventDate(new Date('1858-10-31'))
 
         const moves = [
@@ -208,11 +207,9 @@ describe('PgnFile' , () => {
             game.makeMove(move)
         })
 
-
-        const file = PgnFile.make(game)
-        expect(file.content).toEqual(`[Event "Casual Game"]
+        expect(game.getPGNFileContent()).toEqual(`[Event "Casual Game"]
 [Site "Sol System"]
-[Date "1858.10.30"]
+[Date "1858.10.31"]
 [Round "1"]
 [Result "1-0"]
 [Termination "Normal"]
@@ -269,8 +266,8 @@ describe('PgnFile' , () => {
     it('plays the Immortal Game' , () => {
 
         const game = Game.makeNewGame();
-        game.setPlayer(new Player('white', 'Bobby Fischer'))
-        game.setPlayer(new Player('black', 'Boris Spassky'))
+        game.setPlayer('white', 'Bobby Fischer')
+        game.setPlayer('black', 'Boris Spassky')
         game.setEventDate(new Date('1972-09-01'))
 
         const moves = [
@@ -294,7 +291,7 @@ describe('PgnFile' , () => {
         game.setResigns('black')
         expect(game.getPGNFileContent()).toEqual(`[Event "Casual Game"]
 [Site "Sol System"]
-[Date "1972.08.31"]
+[Date "1972.09.01"]
 [Round "1"]
 [Result "1-0"]
 [Termination "Normal"]

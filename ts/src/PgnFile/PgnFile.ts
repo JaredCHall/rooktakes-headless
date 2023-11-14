@@ -109,10 +109,10 @@ export class PgnFile
             return val.toString().padStart(2, '0')
         }
 
-        const yyyy = date.getFullYear()
+        const yyyy = date.getUTCFullYear()
         // increment month since index starts at zero for january
-        const mm = pad2(date.getMonth() + 1)
-        const dd = pad2(date.getDate())
+        const mm = pad2(date.getUTCMonth() + 1)
+        const dd = pad2(date.getUTCDate())
 
         return `${yyyy}.${mm}.${dd}`
     }

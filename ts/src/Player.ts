@@ -8,9 +8,9 @@ export class Player {
 
     readonly elo: null|number
 
-    readonly title: null|'FM'|'NM'|'IM'|'GM'
+    readonly title: null|string
 
-    constructor(color: ColorType, name: string, elo: null|number = null, title: null|'FM'|'NM'|'IM'|'GM' = null) {
+    constructor(color: ColorType, name: string, elo: null|number = null, title: null|string = null) {
         this.color = color
         this.name = name
         this.elo = elo

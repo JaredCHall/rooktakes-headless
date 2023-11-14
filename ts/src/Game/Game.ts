@@ -122,7 +122,8 @@ export class Game
         this.gameOptions.moveNotationType = type
     }
 
-    setPlayer(player: Player){
+    setPlayer(color: ColorType, name: string, elo: null|number = null, title: null|string = null){
+        const player = new Player(color, name, elo, title)
         if(player.color === 'white'){
             this.playerWhite = player
             return
