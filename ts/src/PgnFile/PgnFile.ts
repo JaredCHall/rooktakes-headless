@@ -1,8 +1,9 @@
 import type {MoveHistory} from "@chess/Move/MoveHistory";
-import type {Game} from "@chess/Game/Game";
+import {Game} from "@chess/Game/Game";
 import type {GameResult} from "@chess/Game/GameResult";
 import type {MadeMove} from "@chess/Move/MadeMove";
 import {MoveArbiter} from "@chess/MoveArbiter/MoveArbiter";
+import {PgnParser} from "@chess/PgnFile/PgnParser";
 
 export class PgnFile
 {
@@ -48,40 +49,10 @@ export class PgnFile
         return file
     }
 
-    static parse(fileContent: string)
+    static parse(fileContent: string): Game
     {
-        // normalize new-lines
-        fileContent = fileContent.replace('\r\n','\n')
-        const lines = fileContent.split('\n')
-
-        let headerLines: string[] = []
-        let moveLines: string[] = []
-        let foundLastHeader = false
-        lines.forEach((line: string) => {
-            if(line.charAt(0) === '['){
-                headerLines.push(line)
-            }
-            if(!foundLastHeader && line === '\n'){
-                foundLastHeader = true
-            }
-            if(foundLastHeader){
-                moveLines.push(line)
-            }
-        })
-
-        let headers = {}
-        headerLines.forEach((line: string) => {
-            const parts = line.match(/^\[([a-zA-Z0-9]+) ["']([^"'+])["']$/)
-            if(parts === null){
-                throw new Error("Could not parse header line: "+line)
-            }
-            const key = parts[1] ?? null
-            const value = parts[2] ?? null
-
-            //@ts-ignore
-            headers[key] = value
-        })
-
+        const parser = new PgnParser(fileContent)
+        return parser.parse()
     }
 
     private static hydrateSanNotations(game: Game): void
