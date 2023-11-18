@@ -74,8 +74,6 @@ export class Game
 
         const extendedFen = new ExtendedFen(fen)
         this.squares64 = new Squares64(extendedFen)
-
-
         if(this.gameOptions.countMaterial){
             this.material = MaterialScores.make(this.squares64)
         }
@@ -118,6 +116,12 @@ export class Game
         this.siteName = name
     }
 
+    makeVariation(): Game {
+        const game = new Game(this.fenNumber.toString(), this.gameOptions)
+        this.moveHistory.addVariation(this.moveIndex, game.moveHistory)
+        return game
+    }
+
     setInputType(type: 'SAN'|'Coordinate'): void {
         this.gameOptions.moveNotationType = type
     }
@@ -149,13 +153,6 @@ export class Game
         }
         this.fenNumber.updateSquares64(this.squares64)
         this.moveIndex = moveIndex
-    }
-
-    seekMadeMove(moveIndex: number): void
-    {
-        this.gamePosition = this.moveHistory.getPositionBefore(moveIndex)
-        this.fenNumber.updateSquares64(this.squares64)
-        this.moveIndex = moveIndex - 1
     }
 
     makeMove(move: ChessMove|string): void {

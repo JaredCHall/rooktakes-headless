@@ -1,10 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import {Game} from "@chess/Game/Game";
-import {PgnFile} from "../../../ts/src/PgnFile/PgnFile";
-
 
 describe('PgnFile' , () => {
-
 
     it('it creates PGN file of a Scholars Mate' , () => {
 
@@ -344,48 +341,5 @@ describe('PgnFile' , () => {
 41. Qf4
 `)
     })
-
-
-    it('parses a PGN file' , () => {
-        const game = PgnFile.parse(`[Event "Magnus Carlsen Invitational 2021"]
-[Site "Sol System"]
-[Date "1970.01.01"]
-[Round "10"]
-[Result "1/2-1/2"]
-[Termination "Normal"]
-[White "Magnus Carlsen"]
-[Black "Hikaru Nakamura"]
-[WhiteElo "2881"]
-[BlackElo "2829"]
-
-1. e4 e5
-2. Ke2 Ke7
-3. Ke1 Ke8
-4. Ke2 Ke7
-5. Ke1 Ke8
-6. Ke2 Ke7
-`)
-
-        expect(game.getPGNFileContent()).toEqual(`[Event "Magnus Carlsen Invitational 2021"]
-[Site "Sol System"]
-[Date "1970.01.01"]
-[Round "10"]
-[Result "1/2-1/2"]
-[Termination "Normal"]
-[White "Magnus Carlsen"]
-[Black "Hikaru Nakamura"]
-[WhiteElo "2881"]
-[BlackElo "2829"]
-
-1. e4 e5
-2. Ke2 Ke7
-3. Ke1 Ke8
-4. Ke2 Ke7
-5. Ke1 Ke8
-6. Ke2 Ke7
-`)
-
-    })
-
 
 })

@@ -48,12 +48,12 @@ export class PgnFile
 
         return file
     }
-
     static parse(fileContent: string): Game
     {
-        const parser = new PgnParser(fileContent)
-        return parser.parse()
+        const parser = new PgnParser()
+        return parser.parse(fileContent)
     }
+
 
     private static hydrateSanNotations(game: Game): void
     {

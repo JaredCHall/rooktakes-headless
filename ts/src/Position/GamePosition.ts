@@ -1,6 +1,6 @@
 import type {ExtendedFen} from "@chess/Position/ExtendedFEN";
 import type {GameClock} from "@chess/GameClock/GameClock";
-import type {MaterialScores} from "@chess/Position/MaterialScores";
+import {MaterialScores} from "@chess/Position/MaterialScores";
 
 export class GamePosition
 {
@@ -29,5 +29,19 @@ export class GamePosition
             this.clockWhite = gameClock.timerWhite.timeRemaining
             this.clockBlack = gameClock.timerBlack.timeRemaining
         }
+    }
+
+    clone(): GamePosition {
+
+        let materialScores = null
+        if(this.materialWhite !== null && this.materialBlack !== null){
+            materialScores = new MaterialScores(this.materialWhite, this.materialBlack)
+        }
+
+        return new GamePosition(
+            this.extendedFEN,
+            materialScores,
+            null,
+        )
     }
 }

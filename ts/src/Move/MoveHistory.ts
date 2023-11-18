@@ -1,11 +1,16 @@
 import type {GamePosition} from "@chess/Position/GamePosition";
 import type {MadeMove} from "@chess/Move/MadeMove";
+import {MoveComment} from "@chess/PgnFile/MoveComment";
 
 export class MoveHistory
 {
     moves: MadeMove[] = []
 
     startPosition: GamePosition // Game starting position
+
+    variations: Record<number, MoveHistory[]> = []
+
+    moveComments: Record<number, MoveComment[]> = []
 
     repetitionTracker: {[fenPartial: string]: number} = {} // for enforcing the 3-fold repetition rule
 
@@ -17,6 +22,31 @@ export class MoveHistory
         this.startPosition = startPosition
         const fenPartial = startPosition.extendedFEN?.toString(false,false)
         this.repetitionTracker[fenPartial] = 1
+    }
+
+    addVariation(moveIndex: number, moveHistory: MoveHistory): void {
+        const fenAtIndex = this.getPositionBefore(moveIndex + 1).extendedFEN;
+        if(moveHistory.startPosition.extendedFEN.toString() != fenAtIndex.toString()){
+            throw new Error(`Cannot add variation. Fen mismatch for given arguments.
+moveIndex:           ${moveIndex}
+moveHistoryStartFen: ${moveHistory.startPosition.extendedFEN.toString(true)}
+fenAtIndex:          ${fenAtIndex.toString(true)}
+            `)
+        }
+
+        if(!this.variations.hasOwnProperty(moveIndex)){
+            this.variations[moveIndex] = []
+        }
+
+        this.variations[moveIndex].push(moveHistory)
+    }
+
+    addMoveComment(moveIndex: number, comment: string){
+        if(!this.moveComments.hasOwnProperty(moveIndex)){
+            this.moveComments[moveIndex] = []
+        }
+
+        this.moveComments[moveIndex].push(new MoveComment(comment))
     }
 
     add(move: MadeMove): void {
@@ -42,6 +72,8 @@ export class MoveHistory
         this.#decrementPositionRepetition(move)
         return move
     }
+
+
 
     getPositionBefore(moveIndex: number)
     {

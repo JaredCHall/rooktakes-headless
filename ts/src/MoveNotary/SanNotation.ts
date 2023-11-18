@@ -87,7 +87,7 @@ export class SanNotation extends MoveNotation {
 
         parts = input.match(/^([KQBNR])?([a-h])?([1-8])?(x)?([a-h][1-8])(=[QBNR])?([+#])?$/)
         if(parts === null){
-            throw new Error('Unreadable SAN notation')
+            throw new Error(`Unreadable SAN notation: ${input}`)
         }
         const pieceType = this.getPieceType(parts[1])
         const startFile = parts[2] || null
