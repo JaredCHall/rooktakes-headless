@@ -11,6 +11,9 @@ import {Game} from "@chess/Game/Game";
  *
  * 1. e4 c5 {Sicilian Defense} 2. Nf3 (2. c3 {The Alapin Variation} d5 3. exd5 Qxd5 (3... Nf6 4. d4 cxd4 5. cxd4 {White maintains a pawn center.}) 4. d4 Nf6) 2... d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 g6 {Dragon Variation.} (5... a6 {Najdorf Variation.})
  *
+ * // this one should error as moves out of sequence
+ * 1. e4 e5 2. Nf3 Nc6 (1... d5 {White could have played Scandinavian}) 3. Bb5
+ *
  */
 
 
@@ -109,7 +112,7 @@ export class PgnParser {
 
         let moveText = ''
         do {
-            console.log(`r: ${rDepth}, position: ${position}, remaining: ${contentRemaining}`)
+            //console.log(`r: ${rDepth}, position: ${position}, remaining: ${contentRemaining}`)
 
             char = seek(1)
             if(char === '{'){
@@ -119,7 +122,7 @@ export class PgnParser {
             }
             if(char === '('){
                 const variationContent = seekToVariationEnd()
-                this.#parseVariation(game.makeVariation(), variationContent, rDepth + 1)
+                this.#parseVariation(game.makeVariation(game.moveIndex - 1), variationContent, rDepth + 1)
                 continue
             }
 

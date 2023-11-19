@@ -116,9 +116,11 @@ export class Game
         this.siteName = name
     }
 
-    makeVariation(): Game {
-        const game = new Game(this.fenNumber.toString(), this.gameOptions)
-        this.moveHistory.addVariation(this.moveIndex, game.moveHistory)
+    makeVariation(moveIndex: number|null = null): Game {
+        moveIndex ??= this.moveIndex
+        const fenNumber = this.moveHistory.get(moveIndex).fenAfter
+        const game = new Game(fenNumber.toString(), this.gameOptions)
+        this.moveHistory.addVariation(moveIndex, game.moveHistory)
         return game
     }
 

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {PgnParser} from "@chess/PgnFile/PgnParser";
+import {MoveHistory} from "@chess/Move/MoveHistory";
 
 describe('PgnParser', () => {
 
@@ -43,9 +44,14 @@ describe('PgnParser', () => {
 
         console.log(game.getPGNFileContent())
 
-        //expect(game.getPGNFileContent()).toEqual(fileContent)
+        const variation = game.moveHistory.variations[3][0];
+        expect(variation).toBeInstanceOf(MoveHistory)
+        expect(
+            variation.startPosition.extendedFEN.toString()
+        ).toEqual('rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2')
+        expect(
+            variation.get(1).positionAfter.extendedFEN.toString()
+        ).toEqual('rnbqkbnr/ppp2ppp/3p4/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3')
+
     })
-
-
-    // 1. e4 e5 {This is a standard opening move.} 2. Nf3 Nc6 (2... d6 {The Philidor Defense}) 3. Bb5 {The Ruy Lopez opening.}
 })
