@@ -4,22 +4,31 @@ import {MoveComment} from "@chess/PgnFile/MoveComment";
 
 export class MoveHistory
 {
-    moves: MadeMove[] = []
+    moves: Record<number, MadeMove> = {} // indexed by half step
 
-    startPosition: GamePosition // Game starting position
+    readonly startPosition: GamePosition // Game starting position
 
-    variations: Record<number, MoveHistory[]> = []
+    readonly startHalfStep: number // half steps start at 1, for the first move of the game
 
-    moveComments: Record<number, MoveComment[]> = []
+    protected lastHalfStep: number
+
+    variations: Record<number, MoveHistory[]> = {} // indexed by half step
+
+    moveComments: Record<number, MoveComment[]> = {} // indexed by half step
 
     repetitionTracker: {[fenPartial: string]: number} = {} // for enforcing the 3-fold repetition rule
 
     get length(): number {
-        return this.moves.length
+        if(this.lastHalfStep === 0){
+            return 0
+        }
+        return this.lastHalfStep - this.startHalfStep + 1
     }
 
     constructor(startPosition: GamePosition) {
         this.startPosition = startPosition
+        this.startHalfStep = startPosition.extendedFEN.lastHalfStep + 1
+        this.lastHalfStep = 0
         const fenPartial = startPosition.extendedFEN?.toString(false,false)
         this.repetitionTracker[fenPartial] = 1
     }
@@ -50,30 +59,59 @@ fenAtIndex:          ${fenAtIndex.toString(true)}
     }
 
     add(move: MadeMove): void {
-        this.moves.push(move)
+        const expectedHalfStep = this.lastHalfStep === 0 ? this.startHalfStep : this.lastHalfStep + 1
+        if(move.halfStepIndex != expectedHalfStep){
+            throw new Error(`Expected MadeMove to have half step of ${expectedHalfStep} but received ${move.halfStepIndex}`)
+        }
+
+        this.moves[move.halfStepIndex] = move;
+        this.lastHalfStep = move.halfStepIndex
         this.#incrementPositionRepetition(move)
     }
 
-    get(moveIndex: number): MadeMove {
-        const indexActual = moveIndex - 1
-        const move = this.moves[indexActual] ?? null
+    get(halfStepIndex: number): MadeMove {
+        if(this.length === 0){
+            throw new Error(`Cannot get move at half step ${halfStepIndex} No moves in list`)
+        }
+
+        if(!this.moves.hasOwnProperty(halfStepIndex)){
+            throw new Error(`Move at half step ${halfStepIndex} does not exist`)
+        }
+
+        const move = this.moves[halfStepIndex] ?? null
         if(!move){
-            throw new Error('Move at half step '+moveIndex+' does not exist')
+            throw new Error('Move at half step '+halfStepIndex+' does not exist')
         }
 
         return move
+    }
+
+    each(callback: (move: MadeMove) => boolean|void)
+    {
+        if(this.lastHalfStep === 0){
+            return
+        }
+
+        for(let i = this.startHalfStep; i <= this.lastHalfStep; i++)
+        {
+            const madeMove = this.get(i)
+            if(callback(madeMove) === false){
+                break
+            }
+        }
+    }
+
+    last(): MadeMove {
+        return this.get(this.lastHalfStep)
     }
 
     pop(): MadeMove {
-        const move = this.moves.pop()
-        if(move === undefined){
-            throw new Error('nothing to pop')
-        }
+        const move = this.last()
+        delete this.moves[this.lastHalfStep]
+        this.lastHalfStep--
         this.#decrementPositionRepetition(move)
         return move
     }
-
-
 
     getPositionBefore(moveIndex: number)
     {

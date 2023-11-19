@@ -8,7 +8,7 @@ import {Squares64} from "@chess/Position/Squares64";
 
 describe('ExtendedFEN', () => {
 
-    it('it constructs itself', () => {
+    it('constructs itself', () => {
 
         const evergreenGame = new ExtendedFen('r2q1rk1/ppp2ppp/2np4/2b1p1B1/2B1P1n1/2NP1N2/PPP2PPP/R2Q1RK1 b kq e4 22 40')
 
@@ -72,7 +72,23 @@ describe('ExtendedFEN', () => {
             .toEqual('r1bqkb1r/pppp1p1p/2n2np1/8/3PP3/5Q2/PPP2PPP/RNB1KBNR w KQkq e4 0 1 0 1 0')
     })
 
-    it('it updates moveResult', () => {
+    it('gets last half step' , () => {
+        expect(
+            (new ExtendedFen('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1')).lastHalfStep
+        ).toEqual(0)
+        expect(
+            (new ExtendedFen('rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1')).lastHalfStep
+        ).toEqual(1)
+        expect(
+            (new ExtendedFen('rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2')).lastHalfStep
+        ).toEqual(2)
+        expect(
+            (new ExtendedFen('rnbqkbnr/pp1ppppp/8/2p5/4P3/2N5/PPPP1PPP/R1BQKBNR b KQkq - 1 2')).lastHalfStep
+        ).toEqual(3)
+    })
+
+
+    it('updates moveResult', () => {
         const gameOfTheCentury = new ExtendedFen('1Q6/5pk1/2p3p1/1p2N2p/1b5P/1bn5/2r3P1/2K5 w - - 16 42')
         gameOfTheCentury.updateMoveResult(true,true)
         expect(gameOfTheCentury.isCheck).toBe(true)
@@ -97,7 +113,7 @@ describe('ExtendedFEN', () => {
     })
 
 
-    it('it clones itself', () => {
+    it('clones itself', () => {
         const evergreenGame = new ExtendedFen('r2q1rk1/ppp2ppp/2np4/2b1p1B1/2B1P1n1/2NP1N2/PPP2PPP/R2Q1RK1 b kq e4 22 40')
         const clone = evergreenGame.clone()
 
@@ -105,7 +121,7 @@ describe('ExtendedFEN', () => {
         expect(clone).not.toBe(evergreenGame)
     })
 
-    it('it increments turn', () => {
+    it('increments turn', () => {
         const gameFen = new ExtendedFen('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1')
         const squares64 = new Squares64(new ExtendedFen('r2q1rk1/ppp2ppp/2np4/2b1p1B1/2B1P1n1/2NP1N2/PPP2PPP/R2Q1RK1'))
 
@@ -153,16 +169,13 @@ describe('ExtendedFEN', () => {
 
     })
 
-    it('it revokes castleRights when incrementing turn', () => {
+    it('revokes castleRights when incrementing turn', () => {
 
         const squares64 = new Squares64(new ExtendedFen('r2q1rk1/ppp2ppp/2np4/2b1p1B1/2B1P1n1/2NP1N2/PPP2PPP/R2Q1RK1'))
 
-        let gameFen
         const getTestFen = () => {
             return new ExtendedFen('r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1')
         }
-
-        //
 
 
         // white long castles
@@ -284,8 +297,7 @@ describe('ExtendedFEN', () => {
         expect(squares64.squares.e4.piece).toBeNull()
         expect(squares64.squares.e5.piece).toBeNull()
 
-        let invalidFen
-        invalidFen = new ExtendedFen('rnbqkbPPPPPPP/RNBQKBNR w KQkq - 0 1')
+        let invalidFen = new ExtendedFen('rnbqkbPPPPPPP/RNBQKBNR w KQkq - 0 1')
         expect(() => {invalidFen.updateSquares64(new Squares64())})
             .toThrowError('FEN piece placement must include all eight rows')
 

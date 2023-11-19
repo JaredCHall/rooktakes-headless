@@ -50,7 +50,7 @@ describe('PgnParser', () => {
             variation.startPosition.extendedFEN.toString()
         ).toEqual('rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2')
         expect(
-            variation.get(1).positionAfter.extendedFEN.toString()
+            variation.last().positionAfter.extendedFEN.toString()
         ).toEqual('rnbqkbnr/ppp2ppp/3p4/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3')
 
     })

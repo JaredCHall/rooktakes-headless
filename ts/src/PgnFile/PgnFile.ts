@@ -58,7 +58,7 @@ export class PgnFile
     private static hydrateSanNotations(game: Game): void
     {
         const arbiter = MoveArbiter.fromFen(game.moveHistory.startPosition.extendedFEN)
-        game.moveHistory.moves.forEach((move: MadeMove) => {
+        game.moveHistory.each((move: MadeMove) => {
             const notation = arbiter.moveNotary.getNotation(move.move, 'SAN')
             arbiter.makeMove(move.move, notation)
             move.setSanNotation(notation.serialize())
@@ -69,7 +69,7 @@ export class PgnFile
     {
         let moveText = ''
         let fenBefore = moveHistory.startPosition.extendedFEN
-        moveHistory.moves.forEach((move: MadeMove) => {
+        moveHistory.each((move: MadeMove) => {
             if(move.movingColor == 'white'){
                 moveText += fenBefore.fullMoveCounter.toString() + '.'
             }

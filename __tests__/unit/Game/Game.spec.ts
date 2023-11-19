@@ -72,9 +72,9 @@ describe('Game', () => {
         expect(board.getSquare('e3').piece).toEqual(Piece.pawnWhite())
         expect(board.fenNumber.toString()).toEqual('rnbqkbnr/pppppppp/8/8/8/4P3/PPPP1PPP/RNBQKBNR b KQkq - 0 1')
         expect(board.moveIndex).toEqual(1)
-        expect(board.moveHistory.moves).toHaveLength(1)
-        expect(board.moveHistory.moves[0]).toBeInstanceOf(MadeMove)
-        expect(board.moveHistory.moves[0].move).toEqual(e3)
+        expect(board.moveHistory).toHaveLength(1)
+        expect(board.moveHistory.moves[1]).toBeInstanceOf(MadeMove)
+        expect(board.moveHistory.moves[1].move).toEqual(e3)
 
         const e5 = new DoublePawnMove('e7','e5', Piece.pawnBlack())
         board.makeMove(e5)
@@ -83,9 +83,9 @@ describe('Game', () => {
         expect(board.getSquare('e5').piece).toEqual(Piece.pawnBlack())
         expect(board.fenNumber.toString()).toEqual('rnbqkbnr/pppp1ppp/8/4p3/8/4P3/PPPP1PPP/RNBQKBNR w KQkq e6 0 2')
         expect(board.moveIndex).toEqual(2)
-        expect(board.moveHistory.moves).toHaveLength(2)
-        expect(board.moveHistory.moves[1]).toBeInstanceOf(MadeMove)
-        expect(board.moveHistory.moves[1].move).toEqual(e5)
+        expect(board.moveHistory).toHaveLength(2)
+        expect(board.moveHistory.moves[2]).toBeInstanceOf(MadeMove)
+        expect(board.moveHistory.moves[2].move).toEqual(e5)
 
         board.undoLastMove()
 
@@ -93,9 +93,9 @@ describe('Game', () => {
         expect(board.getSquare('e3').piece).toEqual(Piece.pawnWhite())
         expect(board.fenNumber.toString()).toEqual('rnbqkbnr/pppppppp/8/8/8/4P3/PPPP1PPP/RNBQKBNR b KQkq - 0 1')
         expect(board.moveIndex).toEqual(1)
-        expect(board.moveHistory.moves).toHaveLength(1)
-        expect(board.moveHistory.moves[0]).toBeInstanceOf(MadeMove)
-        expect(board.moveHistory.moves[0].move).toEqual(e3)
+        expect(board.moveHistory).toHaveLength(1)
+        expect(board.moveHistory.moves[1]).toBeInstanceOf(MadeMove)
+        expect(board.moveHistory.moves[1].move).toEqual(e3)
 
     })
 
@@ -168,7 +168,7 @@ describe('Game', () => {
         expect(board.getSquare('d5').piece).toEqual(Piece.queenBlack())
         expect(board.fenNumber.toString()).toEqual('rnb1kbnr/ppp1pppp/8/3q4/8/8/PPPP1PPP/RNBQKBNR w KQkq - 0 3')
         expect(board.moveIndex).toEqual(4)
-        expect(board.moveHistory.moves).toHaveLength(4)
+        expect(board.moveHistory).toHaveLength(4)
 
 
         board.displayMadeMove(3)
@@ -176,28 +176,28 @@ describe('Game', () => {
         expect(board.getSquare('d5').piece).toEqual(Piece.pawnWhite())
         expect(board.fenNumber.toString()).toEqual('rnbqkbnr/ppp1pppp/8/3P4/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 2')
         expect(board.moveIndex).toEqual(3)
-        expect(board.moveHistory.moves).toHaveLength(4)
+        expect(board.moveHistory).toHaveLength(4)
 
         board.displayMadeMove(1)
         expect(board.getSquare('e4').piece).toEqual(Piece.pawnWhite())
         expect(board.getSquare('d5').piece).toBeNull()
         expect(board.fenNumber.toString()).toEqual('rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1')
         expect(board.moveIndex).toEqual(1)
-        expect(board.moveHistory.moves).toHaveLength(4)
+        expect(board.moveHistory).toHaveLength(4)
 
         board.displayMadeMove(4)
         expect(board.getSquare('e4').piece).toBeNull()
         expect(board.getSquare('d5').piece).toEqual(Piece.queenBlack())
         expect(board.fenNumber.toString()).toEqual('rnb1kbnr/ppp1pppp/8/3q4/8/8/PPPP1PPP/RNBQKBNR w KQkq - 0 3')
         expect(board.moveIndex).toEqual(4)
-        expect(board.moveHistory.moves).toHaveLength(4)
+        expect(board.moveHistory).toHaveLength(4)
 
         board.displayMadeMove(0)
         expect(board.getSquare('e4').piece).toBeNull()
         expect(board.getSquare('d5').piece).toBeNull()
         expect(board.fenNumber.toString()).toEqual('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1')
         expect(board.moveIndex).toEqual(0)
-        expect(board.moveHistory.moves).toHaveLength(4)
+        expect(board.moveHistory).toHaveLength(4)
 
     })
 

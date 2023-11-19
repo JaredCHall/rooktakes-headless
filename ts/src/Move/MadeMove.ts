@@ -22,7 +22,7 @@ export class MadeMove {
     ) {
         this.move = move
         this.positionAfter = positionAfter
-        this.halfStepIndex = positionAfter.extendedFEN.halfStepCounter - 1
+        this.halfStepIndex = positionAfter.extendedFEN.lastHalfStep
     }
 
 

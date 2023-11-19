@@ -1,6 +1,5 @@
 import {Squares64} from "@chess/Position/Squares64";
 import {Piece} from "@chess/Piece";
-import type {ChessPieceType} from "@chess/Piece";
 import {Color} from "@chess/Color";
 import type { SquareType } from "@chess/Square/Square";
 import type {ChessMove} from "@chess/Move/MoveType/ChessMove";
@@ -79,9 +78,9 @@ export class ExtendedFen {
         }
     }
 
-    get halfStepCounter(): number
+    get lastHalfStep(): number
     {
-        return this.fullMoveCounter * 2 - 1 + (this.sideToMove === 'black' ? 1 : 0)
+        return (this.fullMoveCounter - 1) * 2 + (this.sideToMove === 'black' ? 1 : 0)
     }
 
     incrementTurn(
@@ -257,7 +256,7 @@ export class ExtendedFen {
     }
 
 
-    static makePiece(fenType: ChessPieceType): Piece
+    static makePiece(fenType: string): Piece
     {
 
         const color = fenType.toLowerCase() === fenType ? Color.BLACK : Color.WHITE
