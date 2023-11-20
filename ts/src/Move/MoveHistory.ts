@@ -50,6 +50,15 @@ fenAtIndex:          ${fenAtIndex.toString(true)}
         this.variations[moveIndex].push(moveHistory)
     }
 
+    getVariations(moveIndex: number): MoveHistory[] {
+
+        if(!this.variations.hasOwnProperty(moveIndex)){
+            throw new Error(`No variation found at move index ${moveIndex}`)
+        }
+
+        return this.variations[moveIndex]
+    }
+
     addMoveComment(moveIndex: number, comment: string){
         if(!this.moveComments.hasOwnProperty(moveIndex)){
             this.moveComments[moveIndex] = []

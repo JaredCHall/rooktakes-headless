@@ -120,8 +120,6 @@ export class Game
         moveIndex ??= this.moveIndex
         const fenNumber = this.moveHistory.get(moveIndex).fenAfter
         const game = new Game(fenNumber.toString(), this.gameOptions)
-        console.log(moveIndex)
-        console.log(fenNumber.toString())
         game.moveIndex = moveIndex
         this.moveHistory.addVariation(moveIndex, game.moveHistory)
         return game

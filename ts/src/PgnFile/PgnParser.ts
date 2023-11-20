@@ -110,6 +110,9 @@ export class PgnParser {
             return variationContent
         }
 
+        let lastHalfStep = game.moveHistory.startHalfStep
+
+        //console.log(lastHalfStep)
         let moveText = ''
         do {
             //console.log(`r: ${rDepth}, position: ${position}, remaining: ${contentRemaining}`)
